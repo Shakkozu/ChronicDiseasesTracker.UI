@@ -18,9 +18,11 @@ export class AppComponent {
       shareReplay()
     );
   constructor (private authService: AuthService) {
+    this.isMobile = this.breakpointObserver.isMatched('(max-width: 599px)');
   }
 
   public isUserLoggedIn$: Observable<boolean> = this.authService.isLoggedIn();
+  public isMobile: boolean = false;
 
   logout() {
     this.authService.logout();
