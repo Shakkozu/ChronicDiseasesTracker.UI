@@ -12,9 +12,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { WeatherForecastComponent } from './weather-forecast/weather-forecast.component';
 import { HttpClientModule } from '@angular/common/http';
-import { MatDashboardComponent } from './mat-dashboard/mat-dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
@@ -22,8 +20,6 @@ import { MatMenuModule } from '@angular/material/menu';
 @NgModule({
   declarations: [
     AppComponent,
-    WeatherForecastComponent,
-    MatDashboardComponent
   ],
   imports: [
     BrowserModule,
