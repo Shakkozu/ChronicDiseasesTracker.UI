@@ -1,0 +1,29 @@
+import { Component } from '@angular/core';
+import { Disease } from '../diseases-list/diseases-list.component';
+import { sample } from 'rxjs';
+
+@Component({
+  selector: 'app-disease-details-nav',
+  templateUrl: './disease-details-nav.component.html',
+  styleUrl: './disease-details-nav.component.scss'
+})
+export class DiseaseDetailsNavComponent {
+  public disease: Disease = SAMPLE_DATA;
+  public items = [
+    { 'title': 'Treatment', 'image': 'assets/images/hor-1.jpg' },
+    { 'title': 'Symptoms', 'image': 'assets/images/hc-8.jpg' },
+    { 'title': 'Diagnosis', 'image': 'assets/images/hc-3.jpg' },
+    { 'title': 'Prevention', 'image': 'assets/images/hc-6.jpg' },
+  ];
+
+  ngOnInit(): void {
+    this.disease = SAMPLE_DATA;
+  }
+
+}
+
+
+const SAMPLE_DATA: Disease = {
+  name: 'Diabetes',
+  guid: '00000000-1111-2222-3333-44444444'
+}

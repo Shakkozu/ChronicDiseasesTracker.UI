@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-diseases-list',
@@ -7,26 +8,29 @@ import { Component } from '@angular/core';
 })
 export class DiseasesListComponent {
   public diseases: Disease[] = [];
-  constructor() {
+  constructor(private router: Router) {
   }
   
   ngOnInit(): void {
     this.diseases = SAMPLE_DATA;
   }
 
-  navigateToDiseaseDetails(disease: Disease) {
+  navigateToDiseaseDetails(diseaseGuid: string) {
+    console.log(`Navigating to disease details for ${ diseaseGuid }`);
+    this.router.navigate(['/diseases', diseaseGuid]);
+    
   }
 }
 
 export interface Disease {
   name: string;
-  id: string;
+  guid: string;
 }
 
 
 const SAMPLE_DATA: Array<Disease> = [
-  { name: 'Diabetes', id: '1' },
-  { name: 'Hypertension', id: '2' },
-  { name: 'Asthma', id: '3' },
-  { name: 'Heart Disease', id: '4' },
+  { name: 'Diabetes', guid: '00000000-1111-2222-3333-44444444' },
+  { name: 'Hypertension', guid: '00000000-1111-2222-3333-44444448' },
+  { name: 'Asthma', guid: '00000000-1111-2222-3333-44444446' },
+  { name: 'Heart Disease', guid: '00000000-1111-2222-3333-444444445' },
 ];

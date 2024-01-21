@@ -1,0 +1,26 @@
+<div class="container mt-4">
+	<mat-toolbar class="justify-center">
+		<span class="text-headline-small">Diseases</span>
+	</mat-toolbar>
+
+	<div class="cards-container mt-4 ml-8">
+		<div class="border border-r-0 0 mt-4 h-20 rounded-xl justify-start items-start inline-flex"
+			*ngFor="let item of items">
+			<div class="Content w-96 h-20 rounded-xl justify-center items-center flex">
+				<div class="Header grow shrink basis-0 self-stretch justify-start items-center inline-flex">
+					<div class="Content grow shrink basis-0 h-20 p-4 justify-start items-center gap-4 flex">
+						<div class="Text grow shrink basis-0 flex-col justify-start items-start gap-1 inline-flex">
+							<div class="text-title-medium font-medium leading-normal tracking-tight">
+								{{ item.title }}
+							</div>
+						</div>
+					</div>
+					<div class="Media mb-1 mr-0 ml-3">
+						<img class="w-24 h-20 border-white rounded-md object-cover" [src]="item.image" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
