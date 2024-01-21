@@ -1,1 +1,40 @@
-<p>diseases-list works!</p>
+<div class="container mt-4">
+	<mat-toolbar class="justify-center color-primary primary">
+		<span class="text-headline-small">Diseases</span>
+	</mat-toolbar>
+	<div class="diseases-list ml-4 mt-12 h-full">
+		<div *ngFor="let disease of diseases" class="w-11/12 h-14 flex-col justify-center items-center inline-flex">
+			<div class="self-stretch grow shrink pl-4 pr-6 py-2 justify-center items-center gap-4 inline-flex">
+				<div class="justify-center items-center flex">
+					<div class="w-6 pt-2 h-6 relative">
+						<mat-icon color="primary" style="font-size: 24px;">
+							coronavirus
+						</mat-icon>
+					</div>
+				</div>
+				<div class="grow shrink basis-0 pt-5 self-stretch flex-col justify-center items-start inline-flex">
+					<div
+						class="self-stretch text-zinc-900 text-base font-normal font-['Roboto'] leading-normal tracking-wide">
+						{{disease.name}}</div>
+				</div>
+				<div class="justify-start items-center  flex">
+					<div class="pr-1 py-1 flex-col justify-center items-center inline-flex">
+						<div class="rounded-[100px] justify-center items-center inline-flex">
+							<div class="w-6 h-6 relative"></div>
+							<mat-icon class="pt-3">navigate_next</mat-icon>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="self-stretch h-px flex-col justify-center items-start flex">
+				<div class="self-stretch h-[0px] border border-stone-300"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="add-button-container absolute bottom-28 right-6">
+		<button mat-fab color="primary">
+			<mat-icon style="font-size: 24px;">add</mat-icon>
+		</button>
+	</div>
+</div>

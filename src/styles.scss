@@ -3,6 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 @import 'avalanche-css/avalanche';
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
@@ -21,3 +22,12 @@ html {
 }
 
 
+
+// change default font colot to #1D1B20
+body {
+	color: #1D1B20;
+}
+
+.color-primary {
+	color: #6750A4;
+}
