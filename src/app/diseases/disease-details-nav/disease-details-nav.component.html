@@ -3,28 +3,23 @@
 		<button mat-icon-button class="mt-1" aria-label="Return button" (click)="backToDiseasesList()">
 			<mat-icon>arrow_back</mat-icon>
 		</button>
-		<span class="text-title-large">Diseases</span>
+		<span class="text-title-large">{{disease.name}}</span>
 		<span class="example-spacer"></span>
 	</mat-toolbar>
 
-	<div class="cards-container mt-4 ml-8">
-		<div class="border border-r-0 0 mt-4 h-20 rounded-xl justify-start items-start inline-flex"
-			*ngFor="let item of items">
-			<div class="Content w-96 h-20 rounded-xl justify-center items-center flex">
-				<div class="Header grow shrink basis-0 self-stretch justify-start items-center inline-flex">
-					<div class="Content grow shrink basis-0 h-20 p-4 justify-start items-center gap-4 flex">
-						<div class="Text grow shrink basis-0 flex-col justify-start items-start gap-1 inline-flex">
-							<div class="text-title-medium font-medium leading-normal tracking-tight">
-								{{ item.title }}
-							</div>
-						</div>
-					</div>
-					<div class="Media mb-1 mr-0 ml-3">
-						<img class="w-24 h-20 border-white rounded-md object-cover" [src]="item.image" />
-					</div>
-				</div>
+	<div class="diseases-list mt-4">
+		<mat-list>
+			<div class="list-item-container" *ngFor="let item of items">
+				<mat-list-item [lines]="2">
+					<img matListItemIcon style="width: 56px; height: 56px; margin: 8px 16px"
+						class="border-white rounded-md object-cover" [src]="item.image" />
+					<div matListItemTitle style="margin-top: 8px;">{{item.title}}</div>
+					<button style="margin-top: 4px;" mat-icon-button matListItemMeta><mat-icon
+							style="font-size: 24px; height: 24px; width: 24px;">navigate_next</mat-icon></button>
+				</mat-list-item>
+				<mat-divider />
+
 			</div>
-		</div>
+		</mat-list>
 	</div>
 </div>
-
