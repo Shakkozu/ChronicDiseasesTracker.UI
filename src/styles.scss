@@ -6,22 +6,6 @@
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-/* styles.scss */
-
-html {
-	font-size: 14px; /* Adjust this to scale components. Default is 16px. */
-}
-
-/* Optionally, adjust the font size for mat-icons */
-.mat-icon {
-	font-size: 18px;
-	height: 18px;
-	width: 18px;
-}
-
-
 
 // change default font colot to #1D1B20
 body {
@@ -30,4 +14,12 @@ body {
 
 .color-primary {
 	color: #6750A4;
+}
+
+.mat-icon {
+	font-size: 24px;;
+}
+
+.mdc-list-item__start, .mdc-list-item__end, .mdc-list-item__graphic, .mdc-list-item__meta, .mdc-list-item__text-icon {
+	color: #6750A4 !important;
 }

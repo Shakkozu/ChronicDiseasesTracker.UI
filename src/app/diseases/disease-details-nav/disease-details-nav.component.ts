@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Disease } from '../diseases-list/diseases-list.component';
 import { sample } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-disease-details-nav',
@@ -8,6 +9,12 @@ import { sample } from 'rxjs';
   styleUrl: './disease-details-nav.component.scss'
 })
 export class DiseaseDetailsNavComponent {
+  /**
+   *
+   */
+  constructor(private router: Router) {
+    
+  }
   public disease: Disease = SAMPLE_DATA;
   public items = [
     { 'title': 'Treatment', 'image': 'assets/images/hor-1.jpg' },
@@ -18,6 +25,10 @@ export class DiseaseDetailsNavComponent {
 
   ngOnInit(): void {
     this.disease = SAMPLE_DATA;
+  }
+
+  backToDiseasesList() {
+    this.router.navigate(['/diseases']);
   }
 
 }

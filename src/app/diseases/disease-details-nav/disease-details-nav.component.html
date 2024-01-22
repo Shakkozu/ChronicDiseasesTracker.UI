@@ -1,6 +1,10 @@
 <div class="container mt-4">
-	<mat-toolbar class="justify-center">
-		<span class="text-headline-small">Diseases</span>
+	<mat-toolbar class="pt-1">
+		<button mat-icon-button class="mt-1" aria-label="Return button" (click)="backToDiseasesList()">
+			<mat-icon>arrow_back</mat-icon>
+		</button>
+		<span class="text-title-large">Diseases</span>
+		<span class="example-spacer"></span>
 	</mat-toolbar>
 
 	<div class="cards-container mt-4 ml-8">
