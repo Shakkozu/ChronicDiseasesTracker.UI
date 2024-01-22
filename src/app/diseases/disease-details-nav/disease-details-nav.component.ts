@@ -9,9 +9,6 @@ import { Router } from '@angular/router';
   styleUrl: './disease-details-nav.component.scss'
 })
 export class DiseaseDetailsNavComponent {
-  /**
-   *
-   */
   constructor(private router: Router) {
     
   }
@@ -29,6 +26,11 @@ export class DiseaseDetailsNavComponent {
 
   backToDiseasesList() {
     this.router.navigate(['/diseases']);
+  }
+
+  navigateToDetails(item: any) {
+    const route = '/diseases/' + this.disease.guid + '/treatments';
+    this.router.navigate([route]);
   }
 
 }
