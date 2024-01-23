@@ -11,7 +11,7 @@ export class TreatmentsHistoryComponent {
 
   constructor () { }
 
-  public get getDiseaseName(): string { 
+  public get getDiseaseName(): string {
     return this.treatments[0]?.disease ?? '';
   }
 
@@ -36,310 +36,34 @@ export class TreatmentsHistoryComponent {
 
 export const SAMPLE_DATA: TreatmentDetails[] = [
   {
-  disease: 'Asthma',
-  treatment: 'Inhaled corticosteroids',
-  establishedBy: 'Dr. Robert Johnson',
-  establishedOn: new Date(),
-  startDate: new Date(),
-  medications: [
-    {
-      name: 'Fluticasone',
-      frequencyEntries: [{ dosage: '100mcg', when: 'Morning' }, { dosage: '100mcg', when: 'Evening' }],
-      dosage: '100mcg',
-      frequency: 'Twice daily',
-      establishedOn: new Date()
-    },
-    {
-      name: 'Budesonide',
-      frequencyEntries: [{ dosage: '200mcg', when: 'Morning' }],
-      dosage: '200mcg',
-      frequency: 'Daily',
-      establishedOn: new Date()
-    }
-  ]
-},
-  {
     disease: 'Asthma',
-    treatment: 'Long-acting beta agonists',
-    establishedBy: 'Dr. Alice Williams',
+    diseaseGuid: '00000000-0000-0000-0000-000000000000',
+    guid: '00000000-0000-0000-0000-000000000000',
+    treatment: 'Inhaled corticosteroids',
+    establishedBy: 'Dr. Robert Johnson',
     establishedOn: new Date(),
     startDate: new Date(),
-    endDate: new Date(),
     medications: [
       {
-        name: 'Salmeterol',
-        frequencyEntries: [{ dosage: '50mcg', when: 'Morning' }, { dosage: '50mcg', when: 'Evening' }],
-        dosage: '50mcg',
+        name: 'Fluticasone',
+        frequencyEntries: [{ dosage: '100mcg', when: 'Morning' }, { dosage: '100mcg', when: 'Evening' }],
+        dosage: '100mcg',
         frequency: 'Twice daily',
+        establishedOn: new Date()
+      },
+      {
+        name: 'Budesonide',
+        frequencyEntries: [{ dosage: '200mcg', when: 'Morning' }],
+        dosage: '200mcg',
+        frequency: 'Daily',
         establishedOn: new Date()
       }
     ]
   },
   {
-  disease: 'Asthma',
-  treatment: 'Inhaled corticosteroids',
-  establishedBy: 'Dr. Robert Johnson',
-  establishedOn: new Date(),
-  startDate: new Date(),
-  medications: [
-    {
-      name: 'Fluticasone',
-      frequencyEntries: [{ dosage: '100mcg', when: 'Morning' }, { dosage: '100mcg', when: 'Evening' }],
-      dosage: '100mcg',
-      frequency: 'Twice daily',
-      establishedOn: new Date()
-    },
-    {
-      name: 'Budesonide',
-      frequencyEntries: [{ dosage: '200mcg', when: 'Morning' }],
-      dosage: '200mcg',
-      frequency: 'Daily',
-      establishedOn: new Date()
-    }
-  ]
-},
-  {
     disease: 'Asthma',
-    treatment: 'Long-acting beta agonists',
-    establishedBy: 'Dr. Alice Williams',
-    establishedOn: new Date(),
-    startDate: new Date(),
-    endDate: new Date(),
-    medications: [
-      {
-        name: 'Salmeterol',
-        frequencyEntries: [{ dosage: '50mcg', when: 'Morning' }, { dosage: '50mcg', when: 'Evening' }],
-        dosage: '50mcg',
-        frequency: 'Twice daily',
-        establishedOn: new Date()
-      }
-    ]
-  },
-  {
-  disease: 'Asthma',
-  treatment: 'Inhaled corticosteroids',
-  establishedBy: 'Dr. Robert Johnson',
-  establishedOn: new Date(),
-  startDate: new Date(),
-  medications: [
-    {
-      name: 'Fluticasone',
-      frequencyEntries: [{ dosage: '100mcg', when: 'Morning' }, { dosage: '100mcg', when: 'Evening' }],
-      dosage: '100mcg',
-      frequency: 'Twice daily',
-      establishedOn: new Date()
-    },
-    {
-      name: 'Budesonide',
-      frequencyEntries: [{ dosage: '200mcg', when: 'Morning' }],
-      dosage: '200mcg',
-      frequency: 'Daily',
-      establishedOn: new Date()
-    }
-  ]
-},
-  {
-    disease: 'Asthma',
-    treatment: 'Long-acting beta agonists',
-    establishedBy: 'Dr. Alice Williams',
-    establishedOn: new Date(),
-    startDate: new Date(),
-    endDate: new Date(),
-    medications: [
-      {
-        name: 'Salmeterol',
-        frequencyEntries: [{ dosage: '50mcg', when: 'Morning' }, { dosage: '50mcg', when: 'Evening' }],
-        dosage: '50mcg',
-        frequency: 'Twice daily',
-        establishedOn: new Date()
-      }
-    ]
-  },
-  {
-  disease: 'Asthma',
-  treatment: 'Inhaled corticosteroids',
-  establishedBy: 'Dr. Robert Johnson',
-  establishedOn: new Date(),
-  startDate: new Date(),
-  medications: [
-    {
-      name: 'Fluticasone',
-      frequencyEntries: [{ dosage: '100mcg', when: 'Morning' }, { dosage: '100mcg', when: 'Evening' }],
-      dosage: '100mcg',
-      frequency: 'Twice daily',
-      establishedOn: new Date()
-    },
-    {
-      name: 'Budesonide',
-      frequencyEntries: [{ dosage: '200mcg', when: 'Morning' }],
-      dosage: '200mcg',
-      frequency: 'Daily',
-      establishedOn: new Date()
-    }
-  ]
-},
-  {
-    disease: 'Asthma',
-    treatment: 'Long-acting beta agonists',
-    establishedBy: 'Dr. Alice Williams',
-    establishedOn: new Date(),
-    startDate: new Date(),
-    endDate: new Date(),
-    medications: [
-      {
-        name: 'Salmeterol',
-        frequencyEntries: [{ dosage: '50mcg', when: 'Morning' }, { dosage: '50mcg', when: 'Evening' }],
-        dosage: '50mcg',
-        frequency: 'Twice daily',
-        establishedOn: new Date()
-      }
-    ]
-  },
-  {
-  disease: 'Asthma',
-  treatment: 'Inhaled corticosteroids',
-  establishedBy: 'Dr. Robert Johnson',
-  establishedOn: new Date(),
-  startDate: new Date(),
-  medications: [
-    {
-      name: 'Fluticasone',
-      frequencyEntries: [{ dosage: '100mcg', when: 'Morning' }, { dosage: '100mcg', when: 'Evening' }],
-      dosage: '100mcg',
-      frequency: 'Twice daily',
-      establishedOn: new Date()
-    },
-    {
-      name: 'Budesonide',
-      frequencyEntries: [{ dosage: '200mcg', when: 'Morning' }],
-      dosage: '200mcg',
-      frequency: 'Daily',
-      establishedOn: new Date()
-    }
-  ]
-},
-  {
-    disease: 'Asthma',
-    treatment: 'Long-acting beta agonists',
-    establishedBy: 'Dr. Alice Williams',
-    establishedOn: new Date(),
-    startDate: new Date(),
-    endDate: new Date(),
-    medications: [
-      {
-        name: 'Salmeterol',
-        frequencyEntries: [{ dosage: '50mcg', when: 'Morning' }, { dosage: '50mcg', when: 'Evening' }],
-        dosage: '50mcg',
-        frequency: 'Twice daily',
-        establishedOn: new Date()
-      }
-    ]
-  },
-  {
-  disease: 'Asthma',
-  treatment: 'Inhaled corticosteroids',
-  establishedBy: 'Dr. Robert Johnson',
-  establishedOn: new Date(),
-  startDate: new Date(),
-  medications: [
-    {
-      name: 'Fluticasone',
-      frequencyEntries: [{ dosage: '100mcg', when: 'Morning' }, { dosage: '100mcg', when: 'Evening' }],
-      dosage: '100mcg',
-      frequency: 'Twice daily',
-      establishedOn: new Date()
-    },
-    {
-      name: 'Budesonide',
-      frequencyEntries: [{ dosage: '200mcg', when: 'Morning' }],
-      dosage: '200mcg',
-      frequency: 'Daily',
-      establishedOn: new Date()
-    }
-  ]
-},
-  {
-    disease: 'Asthma',
-    treatment: 'Long-acting beta agonists',
-    establishedBy: 'Dr. Alice Williams',
-    establishedOn: new Date(),
-    startDate: new Date(),
-    endDate: new Date(),
-    medications: [
-      {
-        name: 'Salmeterol',
-        frequencyEntries: [{ dosage: '50mcg', when: 'Morning' }, { dosage: '50mcg', when: 'Evening' }],
-        dosage: '50mcg',
-        frequency: 'Twice daily',
-        establishedOn: new Date()
-      }
-    ]
-  },
-  {
-  disease: 'Asthma',
-  treatment: 'Inhaled corticosteroids',
-  establishedBy: 'Dr. Robert Johnson',
-  establishedOn: new Date(),
-  startDate: new Date(),
-  medications: [
-    {
-      name: 'Fluticasone',
-      frequencyEntries: [{ dosage: '100mcg', when: 'Morning' }, { dosage: '100mcg', when: 'Evening' }],
-      dosage: '100mcg',
-      frequency: 'Twice daily',
-      establishedOn: new Date()
-    },
-    {
-      name: 'Budesonide',
-      frequencyEntries: [{ dosage: '200mcg', when: 'Morning' }],
-      dosage: '200mcg',
-      frequency: 'Daily',
-      establishedOn: new Date()
-    }
-  ]
-},
-  {
-    disease: 'Asthma',
-    treatment: 'Long-acting beta agonists',
-    establishedBy: 'Dr. Alice Williams',
-    establishedOn: new Date(),
-    startDate: new Date(),
-    endDate: new Date(),
-    medications: [
-      {
-        name: 'Salmeterol',
-        frequencyEntries: [{ dosage: '50mcg', when: 'Morning' }, { dosage: '50mcg', when: 'Evening' }],
-        dosage: '50mcg',
-        frequency: 'Twice daily',
-        establishedOn: new Date()
-      }
-    ]
-  },
-  {
-  disease: 'Asthma',
-  treatment: 'Inhaled corticosteroids',
-  establishedBy: 'Dr. Robert Johnson',
-  establishedOn: new Date(),
-  startDate: new Date(),
-  medications: [
-    {
-      name: 'Fluticasone',
-      frequencyEntries: [{ dosage: '100mcg', when: 'Morning' }, { dosage: '100mcg', when: 'Evening' }],
-      dosage: '100mcg',
-      frequency: 'Twice daily',
-      establishedOn: new Date()
-    },
-    {
-      name: 'Budesonide',
-      frequencyEntries: [{ dosage: '200mcg', when: 'Morning' }],
-      dosage: '200mcg',
-      frequency: 'Daily',
-      establishedOn: new Date()
-    }
-  ]
-},
-  {
-    disease: 'Asthma',
+    diseaseGuid: '00000000-0000-0000-0000-000000000000',
+    guid: '00000000-0000-0000-0000-000000000000',
     treatment: 'Long-acting beta agonists',
     establishedBy: 'Dr. Alice Williams',
     establishedOn: new Date(),
@@ -357,11 +81,328 @@ export const SAMPLE_DATA: TreatmentDetails[] = [
   },
   {
     disease: 'Asthma',
+    diseaseGuid: '00000000-0000-0000-0000-000000000000',
+    guid: '00000000-0000-0000-0000-000000000000',
+    treatment: 'Inhaled corticosteroids',
+    establishedBy: 'Dr. Robert Johnson',
+    establishedOn: new Date(),
+    startDate: new Date(),
+    endDate: new Date(),
+    medications: [
+      {
+        name: 'Fluticasone',
+        frequencyEntries: [{ dosage: '100mcg', when: 'Morning' }, { dosage: '100mcg', when: 'Evening' }],
+        dosage: '100mcg',
+        frequency: 'Twice daily',
+        establishedOn: new Date()
+      },
+      {
+        name: 'Budesonide',
+        frequencyEntries: [{ dosage: '200mcg', when: 'Morning' }],
+        dosage: '200mcg',
+        frequency: 'Daily',
+        establishedOn: new Date()
+      }
+    ]
+  },
+  {
+    disease: 'Asthma',
+    diseaseGuid: '00000000-0000-0000-0000-000000000000',
+    guid: '00000000-0000-0000-0000-000000000000',
+    treatment: 'Long-acting beta agonists',
+    establishedBy: 'Dr. Alice Williams',
+    establishedOn: new Date(),
+    startDate: new Date(),
+    endDate: new Date(),
+    medications: [
+      {
+        name: 'Salmeterol',
+        frequencyEntries: [{ dosage: '50mcg', when: 'Morning' }, { dosage: '50mcg', when: 'Evening' }],
+        dosage: '50mcg',
+        frequency: 'Twice daily',
+        establishedOn: new Date()
+      }
+    ]
+  },
+  {
+    disease: 'Asthma',
+    diseaseGuid: '00000000-0000-0000-0000-000000000000',
+    guid: '00000000-0000-0000-0000-000000000000',
+    treatment: 'Inhaled corticosteroids',
+    establishedBy: 'Dr. Robert Johnson',
+    establishedOn: new Date(),
+    startDate: new Date(),
+    endDate: new Date(),
+    medications: [
+      {
+        name: 'Fluticasone',
+        frequencyEntries: [{ dosage: '100mcg', when: 'Morning' }, { dosage: '100mcg', when: 'Evening' }],
+        dosage: '100mcg',
+        frequency: 'Twice daily',
+        establishedOn: new Date()
+      },
+      {
+        name: 'Budesonide',
+        frequencyEntries: [{ dosage: '200mcg', when: 'Morning' }],
+        dosage: '200mcg',
+        frequency: 'Daily',
+        establishedOn: new Date()
+      }
+    ]
+  },
+  {
+    disease: 'Asthma',
+    diseaseGuid: '00000000-0000-0000-0000-000000000000',
+    guid: '00000000-0000-0000-0000-000000000000',
+    treatment: 'Long-acting beta agonists',
+    establishedBy: 'Dr. Alice Williams',
+    establishedOn: new Date(),
+    startDate: new Date(),
+    endDate: new Date(),
+    medications: [
+      {
+        name: 'Salmeterol',
+        frequencyEntries: [{ dosage: '50mcg', when: 'Morning' }, { dosage: '50mcg', when: 'Evening' }],
+        dosage: '50mcg',
+        frequency: 'Twice daily',
+        establishedOn: new Date()
+      }
+    ]
+  },
+  {
+    disease: 'Asthma',
+    diseaseGuid: '00000000-0000-0000-0000-000000000000',
+    guid: '00000000-0000-0000-0000-000000000000',
+    treatment: 'Inhaled corticosteroids',
+    establishedBy: 'Dr. Robert Johnson',
+    establishedOn: new Date(),
+    startDate: new Date(),
+    endDate: new Date(),
+    medications: [
+      {
+        name: 'Fluticasone',
+        frequencyEntries: [{ dosage: '100mcg', when: 'Morning' }, { dosage: '100mcg', when: 'Evening' }],
+        dosage: '100mcg',
+        frequency: 'Twice daily',
+        establishedOn: new Date()
+      },
+      {
+        name: 'Budesonide',
+        frequencyEntries: [{ dosage: '200mcg', when: 'Morning' }],
+        dosage: '200mcg',
+        frequency: 'Daily',
+        establishedOn: new Date()
+      }
+    ]
+  },
+  {
+    disease: 'Asthma',
+    diseaseGuid: '00000000-0000-0000-0000-000000000000',
+    guid: '00000000-0000-0000-0000-000000000000',
+    treatment: 'Long-acting beta agonists',
+    establishedBy: 'Dr. Alice Williams',
+    establishedOn: new Date(),
+    startDate: new Date(),
+    endDate: new Date(),
+    medications: [
+      {
+        name: 'Salmeterol',
+        frequencyEntries: [{ dosage: '50mcg', when: 'Morning' }, { dosage: '50mcg', when: 'Evening' }],
+        dosage: '50mcg',
+        frequency: 'Twice daily',
+        establishedOn: new Date()
+      }
+    ]
+  },
+  {
+    disease: 'Asthma',
+    diseaseGuid: '00000000-0000-0000-0000-000000000000',
+    guid: '00000000-0000-0000-0000-000000000000',
+    treatment: 'Inhaled corticosteroids',
+    establishedBy: 'Dr. Robert Johnson',
+    establishedOn: new Date(),
+    startDate: new Date(),
+    endDate: new Date(),
+    medications: [
+      {
+        name: 'Fluticasone',
+        frequencyEntries: [{ dosage: '100mcg', when: 'Morning' }, { dosage: '100mcg', when: 'Evening' }],
+        dosage: '100mcg',
+        frequency: 'Twice daily',
+        establishedOn: new Date()
+      },
+      {
+        name: 'Budesonide',
+        frequencyEntries: [{ dosage: '200mcg', when: 'Morning' }],
+        dosage: '200mcg',
+        frequency: 'Daily',
+        establishedOn: new Date()
+      }
+    ]
+  },
+  {
+    disease: 'Asthma',
+    diseaseGuid: '00000000-0000-0000-0000-000000000000',
+    guid: '00000000-0000-0000-0000-000000000000',
+    treatment: 'Long-acting beta agonists',
+    establishedBy: 'Dr. Alice Williams',
+    establishedOn: new Date(),
+    startDate: new Date(),
+    endDate: new Date(),
+    medications: [
+      {
+        name: 'Salmeterol',
+        frequencyEntries: [{ dosage: '50mcg', when: 'Morning' }, { dosage: '50mcg', when: 'Evening' }],
+        dosage: '50mcg',
+        frequency: 'Twice daily',
+        establishedOn: new Date()
+      }
+    ]
+  },
+  {
+    disease: 'Asthma',
+    diseaseGuid: '00000000-0000-0000-0000-000000000000',
+    guid: '00000000-0000-0000-0000-000000000000',
+    treatment: 'Inhaled corticosteroids',
+    establishedBy: 'Dr. Robert Johnson',
+    establishedOn: new Date(),
+    startDate: new Date(),
+    endDate: new Date(),
+    medications: [
+      {
+        name: 'Fluticasone',
+        frequencyEntries: [{ dosage: '100mcg', when: 'Morning' }, { dosage: '100mcg', when: 'Evening' }],
+        dosage: '100mcg',
+        frequency: 'Twice daily',
+        establishedOn: new Date()
+      },
+      {
+        name: 'Budesonide',
+        frequencyEntries: [{ dosage: '200mcg', when: 'Morning' }],
+        dosage: '200mcg',
+        frequency: 'Daily',
+        establishedOn: new Date()
+      }
+    ]
+  },
+  {
+    disease: 'Asthma',
+    diseaseGuid: '00000000-0000-0000-0000-000000000000',
+    guid: '00000000-0000-0000-0000-000000000000',
+    treatment: 'Long-acting beta agonists',
+    establishedBy: 'Dr. Alice Williams',
+    establishedOn: new Date(),
+    startDate: new Date(),
+    endDate: new Date(),
+    medications: [
+      {
+        name: 'Salmeterol',
+        frequencyEntries: [{ dosage: '50mcg', when: 'Morning' }, { dosage: '50mcg', when: 'Evening' }],
+        dosage: '50mcg',
+        frequency: 'Twice daily',
+        establishedOn: new Date()
+      }
+    ]
+  },
+  {
+    disease: 'Asthma',
+    diseaseGuid: '00000000-0000-0000-0000-000000000000',
+    guid: '00000000-0000-0000-0000-000000000000',
+    treatment: 'Inhaled corticosteroids',
+    establishedBy: 'Dr. Robert Johnson',
+    establishedOn: new Date(),
+    startDate: new Date(),
+    endDate: new Date(),
+    medications: [
+      {
+        name: 'Fluticasone',
+        frequencyEntries: [{ dosage: '100mcg', when: 'Morning' }, { dosage: '100mcg', when: 'Evening' }],
+        dosage: '100mcg',
+        frequency: 'Twice daily',
+        establishedOn: new Date()
+      },
+      {
+        name: 'Budesonide',
+        frequencyEntries: [{ dosage: '200mcg', when: 'Morning' }],
+        dosage: '200mcg',
+        frequency: 'Daily',
+        establishedOn: new Date()
+      }
+    ]
+  },
+  {
+    disease: 'Asthma',
+    diseaseGuid: '00000000-0000-0000-0000-000000000000',
+    guid: '00000000-0000-0000-0000-000000000000',
+    treatment: 'Long-acting beta agonists',
+    establishedBy: 'Dr. Alice Williams',
+    establishedOn: new Date(),
+    startDate: new Date(),
+    endDate: new Date(),
+    medications: [
+      {
+        name: 'Salmeterol',
+        frequencyEntries: [{ dosage: '50mcg', when: 'Morning' }, { dosage: '50mcg', when: 'Evening' }],
+        dosage: '50mcg',
+        frequency: 'Twice daily',
+        establishedOn: new Date()
+      }
+    ]
+  },
+  {
+    disease: 'Asthma',
+    diseaseGuid: '00000000-0000-0000-0000-000000000000',
+    guid: '00000000-0000-0000-0000-000000000000',
+    treatment: 'Inhaled corticosteroids',
+    establishedBy: 'Dr. Robert Johnson',
+    establishedOn: new Date(),
+    startDate: new Date(),
+    endDate: new Date(),
+    medications: [
+      {
+        name: 'Fluticasone',
+        frequencyEntries: [{ dosage: '100mcg', when: 'Morning' }, { dosage: '100mcg', when: 'Evening' }],
+        dosage: '100mcg',
+        frequency: 'Twice daily',
+        establishedOn: new Date()
+      },
+      {
+        name: 'Budesonide',
+        frequencyEntries: [{ dosage: '200mcg', when: 'Morning' }],
+        dosage: '200mcg',
+        frequency: 'Daily',
+        establishedOn: new Date()
+      }
+    ]
+  },
+  {
+    disease: 'Asthma',
+    diseaseGuid: '00000000-0000-0000-0000-000000000000',
+    guid: '00000000-0000-0000-0000-000000000000',
+    treatment: 'Long-acting beta agonists',
+    establishedBy: 'Dr. Alice Williams',
+    establishedOn: new Date(),
+    startDate: new Date(),
+    endDate: new Date(),
+    medications: [
+      {
+        name: 'Salmeterol',
+        frequencyEntries: [{ dosage: '50mcg', when: 'Morning' }, { dosage: '50mcg', when: 'Evening' }],
+        dosage: '50mcg',
+        frequency: 'Twice daily',
+        establishedOn: new Date()
+      }
+    ]
+  },
+  {
+    disease: 'Asthma',
+    diseaseGuid: '00000000-0000-0000-0000-000000000000',
+    guid: '00000000-0000-0000-0000-000000000000',
     treatment: 'Leukotriene modifiers',
     establishedBy: 'Dr. David Taylor',
     establishedOn: new Date(),
     startDate: new Date(),
-    endDate: new Date(), 
+    endDate: new Date(),
     medications: [
       {
         name: 'Montelukast',

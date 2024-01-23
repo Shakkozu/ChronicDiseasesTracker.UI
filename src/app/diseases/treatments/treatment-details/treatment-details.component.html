@@ -12,7 +12,7 @@
 			<button mat-menu-item>
 				<span>Establish new treatment</span>
 			</button>
-			<button mat-menu-item [routerLink]="['/diseases/treatments-history']">
+			<button mat-menu-item [routerLink]="['/diseases', getDiseaseGuid, 'treatments']">
 				<span>Show historical treatments</span>
 			</button>
 		</mat-menu>

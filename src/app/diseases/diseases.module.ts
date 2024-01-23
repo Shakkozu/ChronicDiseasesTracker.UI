@@ -9,9 +9,10 @@ import { TreatmentsHistoryComponent } from './treatments/treatments-history/trea
 
 const routes: Routes = [
   { path: '', component: DiseasesListComponent },
-  { path: 'treatments-history', component: TreatmentsHistoryComponent },
   { path: ':guid', component: DiseaseDetailsNavComponent },
-  { path: ':guid/treatments', component: TreatmentDetailsComponent },
+  { path: ':guid/treatments', component: TreatmentsHistoryComponent },
+  { path: ':guid/treatments/current', component: TreatmentDetailsComponent },
+  { path: ':guid/treatments/:guid', component: TreatmentDetailsComponent },
 ];
 
 @NgModule({

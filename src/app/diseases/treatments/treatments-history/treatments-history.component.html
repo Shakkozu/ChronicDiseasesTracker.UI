@@ -17,7 +17,7 @@
 
 	<div class="mt-8"></div>
 	<div class="mt-4 mx-4 border-2 rounded-xl"  *ngFor="let treatment of treatments">
-		<mat-card style="box-shadow: none; border-radius: 12px;">
+		<mat-card style="box-shadow: none; border-radius: 12px;" [routerLink]="['/diseases', treatment.diseaseGuid, 'treatments', treatment.guid]">
 			<mat-card-header style="border-radius: 0.75rem">
 				<div mat-card-avatar class="avatar">
 					<div style="width: 100%; height: 100%; position: relative">

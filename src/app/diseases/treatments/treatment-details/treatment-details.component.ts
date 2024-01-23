@@ -8,6 +8,10 @@ import { Component } from '@angular/core';
 export class TreatmentDetailsComponent {
 
   public treatment: TreatmentDetails = SAMPLE_DATA;
+  public get getDiseaseGuid(): string {
+    return this.treatment.diseaseGuid;
+
+  }
 
   return() {
     window.history.back();
@@ -26,6 +30,8 @@ export class TreatmentDetailsComponent {
 
 export const SAMPLE_DATA: TreatmentDetails = {
   disease: 'Diabetes',
+  diseaseGuid: '00000000-0000-0000-0000-000000000000',
+  guid: '00000000-0000-0000-0000-000000000000',
   treatment: 'Insulin',
   establishedBy: 'Dr. John Doe',
   establishedOn: new Date(),
@@ -98,6 +104,8 @@ export const SAMPLE_DATA: TreatmentDetails = {
 };
 
 export interface TreatmentDetails {
+  guid: string;
+  diseaseGuid: string;
   disease: string;
   treatment: string;
   establishedBy: string;
