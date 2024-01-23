@@ -46,6 +46,48 @@ export const SAMPLE_DATA: TreatmentDetails = {
       frequency: 'Daily',
       establishedOn: new Date()
     },
+    {
+      name: 'Insulin',
+      frequencyEntries: [{ dosage: '10mg', when: 'Morning' }],
+      dosage: '10mg',
+      frequency: 'Daily',
+      establishedOn: new Date()
+    },
+    {
+      name: 'Metformin',
+      frequencyEntries: [{ dosage: '10mg', when: 'Morning' }, { dosage: '10mg', when: 'Evening' }, { dosage: '20mg', when: 'Night' }],
+      dosage: '10mg',
+      frequency: 'Daily',
+      establishedOn: new Date()
+    },
+    {
+      name: 'Glipizide',
+      frequencyEntries: [{ dosage: '10mg', when: 'Morning' }, { dosage: '10mg', when: 'Evening' }],
+      dosage: '10mg',
+      frequency: 'Daily',
+      establishedOn: new Date()
+    },
+    {
+      name: 'Insulin',
+      frequencyEntries: [{ dosage: '10mg', when: 'Morning' }],
+      dosage: '10mg',
+      frequency: 'Daily',
+      establishedOn: new Date()
+    },
+    {
+      name: 'Metformin',
+      frequencyEntries: [{ dosage: '10mg', when: 'Morning' }, { dosage: '10mg', when: 'Evening' }, { dosage: '20mg', when: 'Night' }],
+      dosage: '10mg',
+      frequency: 'Daily',
+      establishedOn: new Date()
+    },
+    {
+      name: 'Glipizide',
+      frequencyEntries: [{ dosage: '10mg', when: 'Morning' }, { dosage: '10mg', when: 'Evening' }],
+      dosage: '10mg',
+      frequency: 'Daily',
+      establishedOn: new Date()
+    },
   ]
 };
 
