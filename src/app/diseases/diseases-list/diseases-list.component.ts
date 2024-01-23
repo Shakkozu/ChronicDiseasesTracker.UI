@@ -25,12 +25,13 @@ export class DiseasesListComponent {
 export interface Disease {
   name: string;
   guid: string;
+  currentTreatmentGuid: string;
 }
 
 
 const SAMPLE_DATA: Array<Disease> = [
-  { name: 'Diabetes', guid: '00000000-1111-2222-3333-44444444' },
-  { name: 'Hypertension', guid: '00000000-1111-2222-3333-44444448' },
-  { name: 'Asthma', guid: '00000000-1111-2222-3333-44444446' },
-  { name: 'Heart Disease', guid: '00000000-1111-2222-3333-444444445' },
+  { name: 'Diabetes', guid: '00000000-1111-2222-3333-44444444', currentTreatmentGuid: '00000000-1111-2222-3333-44444444' },
+  { name: 'Hypertension', guid: '00000000-1111-2222-3333-44444448', currentTreatmentGuid: '00000000-1111-2222-3333-44444448' },
+  { name: 'Asthma', guid: '00000000-1111-2222-3333-44444446', currentTreatmentGuid: '00000000-1111-2222-3333-44444446' },
+  { name: 'Heart Disease', guid: '00000000-1111-2222-3333-444444445', currentTreatmentGuid: '00000000-1111-2222-3333-444444445' },
 ];

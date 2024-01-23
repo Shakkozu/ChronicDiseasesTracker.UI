@@ -41,7 +41,7 @@
 	<div class="mt-8 mx-4">
 		<mat-list style="padding-bottom: 5rem;">
 			<div class="list-item-container" *ngFor="let medication of treatment.medications; let i = index">
-				<mat-list-item class="my-4">
+				<mat-list-item class="my-4" [routerLink]="">
 					<div matListItemTitle>{{medication.name}}</div>
 					<div matListItemLine><span>{{medication.frequency}}</span></div>
 					<div matListItemLine *ngFor="let frequencyEntry of medication.frequencyEntries">
