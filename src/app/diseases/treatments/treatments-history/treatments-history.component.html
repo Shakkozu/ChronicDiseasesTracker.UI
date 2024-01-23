@@ -1,9 +1,9 @@
-<div class="container mt-4">
+<div class="container mt-4 pb-24">
 	<mat-toolbar class="pt-1">
 		<button mat-icon-button class="mt-1" aria-label="Return button" (click)="return()">
 			<mat-icon>arrow_back</mat-icon>
 		</button>
-		<span class="text-title-large">{{treatment.disease}} Treatment</span>
+		<span class="text-title-large">{{getDiseaseName}} Treatments</span>
 		<span class="flex-1"></span>
 		<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
 			<mat-icon>more_vert</mat-icon>
@@ -12,13 +12,11 @@
 			<button mat-menu-item>
 				<span>Establish new treatment</span>
 			</button>
-			<button mat-menu-item [routerLink]="['/diseases/treatments-history']">
-				<span>Show historical treatments</span>
-			</button>
 		</mat-menu>
 	</mat-toolbar>
 
-	<div class="mt-12 mx-4 border-2 rounded-xl">
+	<div class="mt-8"></div>
+	<div class="mt-4 mx-4 border-2 rounded-xl"  *ngFor="let treatment of treatments">
 		<mat-card style="box-shadow: none; border-radius: 12px;">
 			<mat-card-header style="border-radius: 0.75rem">
 				<div mat-card-avatar class="avatar">
@@ -33,24 +31,8 @@
 					</div>
 				</div>
 				<mat-card-title>{{treatment.establishedBy}}</mat-card-title>
-				<mat-card-subtitle>{{getDateString()}}</mat-card-subtitle>
+				<mat-card-subtitle>{{getDateString(treatment)}}</mat-card-subtitle>
 			</mat-card-header>
 		</mat-card>
-	</div>
-
-	<div class="mt-8 mx-4">
-		<mat-list style="padding-bottom: 5rem;">
-			<div class="list-item-container" *ngFor="let medication of treatment.medications; let i = index">
-				<mat-list-item class="my-4">
-					<div matListItemTitle>{{medication.name}}</div>
-					<div matListItemLine><span>{{medication.frequency}}</span></div>
-					<div matListItemLine *ngFor="let frequencyEntry of medication.frequencyEntries">
-						{{frequencyEntry.when}} - {{frequencyEntry.dosage}}
-					</div>
-					<div matListItemMeta>{{medication.establishedOn | date}}</div>
-				</mat-list-item>
-				<mat-divider />
-			</div>
-		</mat-list>
 	</div>
 </div>

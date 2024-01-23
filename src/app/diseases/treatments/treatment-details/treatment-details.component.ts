@@ -13,6 +13,11 @@ export class TreatmentDetailsComponent {
     window.history.back();
   }
 
+  getDateString() {
+    const endDate = this.treatment.endDate ? this.treatment.endDate.toLocaleDateString() : 'now';
+    return `${ this.treatment.startDate.toLocaleDateString() } - ${ endDate}`
+  }
+
   getInitials(establishedBy: string) {
     return establishedBy.split(' ').map(n => n[0]).join('').substring(1,3);
   }
@@ -24,6 +29,7 @@ export const SAMPLE_DATA: TreatmentDetails = {
   treatment: 'Insulin',
   establishedBy: 'Dr. John Doe',
   establishedOn: new Date(),
+  startDate: new Date(),
   medications: [
     {
       name: 'Insulin',
@@ -96,6 +102,8 @@ export interface TreatmentDetails {
   treatment: string;
   establishedBy: string;
   establishedOn: Date;
+  startDate: Date;
+  endDate?: Date;
   medications: Medication[];
 }
 
