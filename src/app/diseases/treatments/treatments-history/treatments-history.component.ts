@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TreatmentDetails } from '../treatment-details/treatment-details.component';
+import { DateService } from '../../services/date-service';
 
 @Component({
   selector: 'app-treatments-history',
@@ -28,8 +29,7 @@ export class TreatmentsHistoryComponent {
   }
 
   getDateString(treatment: TreatmentDetails) {
-    const endDate = treatment.endDate ? treatment.endDate.toLocaleDateString() : 'now';
-    return `${ treatment.startDate.toLocaleDateString() } - ${ endDate }`
+    return DateService.getDurationString(treatment.startDate, treatment.endDate);
   }
 }
 
@@ -47,14 +47,12 @@ export const SAMPLE_DATA: TreatmentDetails[] = [
       {
         name: 'Fluticasone',
         frequencyEntries: [{ dosage: '100mcg', when: 'Morning' }, { dosage: '100mcg', when: 'Evening' }],
-        dosage: '100mcg',
         frequency: 'Twice daily',
         establishedOn: new Date()
       },
       {
         name: 'Budesonide',
         frequencyEntries: [{ dosage: '200mcg', when: 'Morning' }],
-        dosage: '200mcg',
         frequency: 'Daily',
         establishedOn: new Date()
       }
@@ -73,7 +71,6 @@ export const SAMPLE_DATA: TreatmentDetails[] = [
       {
         name: 'Salmeterol',
         frequencyEntries: [{ dosage: '50mcg', when: 'Morning' }, { dosage: '50mcg', when: 'Evening' }],
-        dosage: '50mcg',
         frequency: 'Twice daily',
         establishedOn: new Date()
       }
@@ -92,14 +89,12 @@ export const SAMPLE_DATA: TreatmentDetails[] = [
       {
         name: 'Fluticasone',
         frequencyEntries: [{ dosage: '100mcg', when: 'Morning' }, { dosage: '100mcg', when: 'Evening' }],
-        dosage: '100mcg',
         frequency: 'Twice daily',
         establishedOn: new Date()
       },
       {
         name: 'Budesonide',
         frequencyEntries: [{ dosage: '200mcg', when: 'Morning' }],
-        dosage: '200mcg',
         frequency: 'Daily',
         establishedOn: new Date()
       }
@@ -118,7 +113,6 @@ export const SAMPLE_DATA: TreatmentDetails[] = [
       {
         name: 'Salmeterol',
         frequencyEntries: [{ dosage: '50mcg', when: 'Morning' }, { dosage: '50mcg', when: 'Evening' }],
-        dosage: '50mcg',
         frequency: 'Twice daily',
         establishedOn: new Date()
       }
@@ -137,14 +131,12 @@ export const SAMPLE_DATA: TreatmentDetails[] = [
       {
         name: 'Fluticasone',
         frequencyEntries: [{ dosage: '100mcg', when: 'Morning' }, { dosage: '100mcg', when: 'Evening' }],
-        dosage: '100mcg',
         frequency: 'Twice daily',
         establishedOn: new Date()
       },
       {
         name: 'Budesonide',
         frequencyEntries: [{ dosage: '200mcg', when: 'Morning' }],
-        dosage: '200mcg',
         frequency: 'Daily',
         establishedOn: new Date()
       }
@@ -163,7 +155,6 @@ export const SAMPLE_DATA: TreatmentDetails[] = [
       {
         name: 'Salmeterol',
         frequencyEntries: [{ dosage: '50mcg', when: 'Morning' }, { dosage: '50mcg', when: 'Evening' }],
-        dosage: '50mcg',
         frequency: 'Twice daily',
         establishedOn: new Date()
       }
@@ -182,14 +173,12 @@ export const SAMPLE_DATA: TreatmentDetails[] = [
       {
         name: 'Fluticasone',
         frequencyEntries: [{ dosage: '100mcg', when: 'Morning' }, { dosage: '100mcg', when: 'Evening' }],
-        dosage: '100mcg',
         frequency: 'Twice daily',
         establishedOn: new Date()
       },
       {
         name: 'Budesonide',
         frequencyEntries: [{ dosage: '200mcg', when: 'Morning' }],
-        dosage: '200mcg',
         frequency: 'Daily',
         establishedOn: new Date()
       }
@@ -208,7 +197,6 @@ export const SAMPLE_DATA: TreatmentDetails[] = [
       {
         name: 'Salmeterol',
         frequencyEntries: [{ dosage: '50mcg', when: 'Morning' }, { dosage: '50mcg', when: 'Evening' }],
-        dosage: '50mcg',
         frequency: 'Twice daily',
         establishedOn: new Date()
       }
@@ -227,14 +215,12 @@ export const SAMPLE_DATA: TreatmentDetails[] = [
       {
         name: 'Fluticasone',
         frequencyEntries: [{ dosage: '100mcg', when: 'Morning' }, { dosage: '100mcg', when: 'Evening' }],
-        dosage: '100mcg',
         frequency: 'Twice daily',
         establishedOn: new Date()
       },
       {
         name: 'Budesonide',
         frequencyEntries: [{ dosage: '200mcg', when: 'Morning' }],
-        dosage: '200mcg',
         frequency: 'Daily',
         establishedOn: new Date()
       }
@@ -253,7 +239,6 @@ export const SAMPLE_DATA: TreatmentDetails[] = [
       {
         name: 'Salmeterol',
         frequencyEntries: [{ dosage: '50mcg', when: 'Morning' }, { dosage: '50mcg', when: 'Evening' }],
-        dosage: '50mcg',
         frequency: 'Twice daily',
         establishedOn: new Date()
       }
@@ -272,14 +257,12 @@ export const SAMPLE_DATA: TreatmentDetails[] = [
       {
         name: 'Fluticasone',
         frequencyEntries: [{ dosage: '100mcg', when: 'Morning' }, { dosage: '100mcg', when: 'Evening' }],
-        dosage: '100mcg',
         frequency: 'Twice daily',
         establishedOn: new Date()
       },
       {
         name: 'Budesonide',
         frequencyEntries: [{ dosage: '200mcg', when: 'Morning' }],
-        dosage: '200mcg',
         frequency: 'Daily',
         establishedOn: new Date()
       }
@@ -298,7 +281,6 @@ export const SAMPLE_DATA: TreatmentDetails[] = [
       {
         name: 'Salmeterol',
         frequencyEntries: [{ dosage: '50mcg', when: 'Morning' }, { dosage: '50mcg', when: 'Evening' }],
-        dosage: '50mcg',
         frequency: 'Twice daily',
         establishedOn: new Date()
       }
@@ -317,14 +299,12 @@ export const SAMPLE_DATA: TreatmentDetails[] = [
       {
         name: 'Fluticasone',
         frequencyEntries: [{ dosage: '100mcg', when: 'Morning' }, { dosage: '100mcg', when: 'Evening' }],
-        dosage: '100mcg',
         frequency: 'Twice daily',
         establishedOn: new Date()
       },
       {
         name: 'Budesonide',
         frequencyEntries: [{ dosage: '200mcg', when: 'Morning' }],
-        dosage: '200mcg',
         frequency: 'Daily',
         establishedOn: new Date()
       }
@@ -343,7 +323,6 @@ export const SAMPLE_DATA: TreatmentDetails[] = [
       {
         name: 'Salmeterol',
         frequencyEntries: [{ dosage: '50mcg', when: 'Morning' }, { dosage: '50mcg', when: 'Evening' }],
-        dosage: '50mcg',
         frequency: 'Twice daily',
         establishedOn: new Date()
       }
@@ -362,14 +341,12 @@ export const SAMPLE_DATA: TreatmentDetails[] = [
       {
         name: 'Fluticasone',
         frequencyEntries: [{ dosage: '100mcg', when: 'Morning' }, { dosage: '100mcg', when: 'Evening' }],
-        dosage: '100mcg',
         frequency: 'Twice daily',
         establishedOn: new Date()
       },
       {
         name: 'Budesonide',
         frequencyEntries: [{ dosage: '200mcg', when: 'Morning' }],
-        dosage: '200mcg',
         frequency: 'Daily',
         establishedOn: new Date()
       }
@@ -388,7 +365,6 @@ export const SAMPLE_DATA: TreatmentDetails[] = [
       {
         name: 'Salmeterol',
         frequencyEntries: [{ dosage: '50mcg', when: 'Morning' }, { dosage: '50mcg', when: 'Evening' }],
-        dosage: '50mcg',
         frequency: 'Twice daily',
         establishedOn: new Date()
       }
@@ -407,7 +383,6 @@ export const SAMPLE_DATA: TreatmentDetails[] = [
       {
         name: 'Montelukast',
         frequencyEntries: [{ dosage: '10mg', when: 'Evening' }],
-        dosage: '10mg',
         frequency: 'Daily',
         establishedOn: new Date()
       }

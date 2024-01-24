@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DateService } from '../../services/date-service';
 
 @Component({
   selector: 'app-treatment-details',
@@ -18,8 +19,7 @@ export class TreatmentDetailsComponent {
   }
 
   getDateString() {
-    const endDate = this.treatment.endDate ? this.treatment.endDate.toLocaleDateString() : 'now';
-    return `${ this.treatment.startDate.toLocaleDateString() } - ${ endDate}`
+    DateService.getDurationString(this.treatment.startDate, this.treatment.endDate);
   }
 
   getInitials(establishedBy: string) {
@@ -40,63 +40,54 @@ export const SAMPLE_DATA: TreatmentDetails = {
     {
       name: 'Insulin',
       frequencyEntries: [{ dosage: '10mg', when: 'Morning' }],
-      dosage: '10mg',
       frequency: 'Daily',
       establishedOn: new Date()
     },
     {
       name: 'Metformin',
       frequencyEntries: [{ dosage: '10mg', when: 'Morning' }, { dosage: '10mg', when: 'Evening' }, { dosage: '20mg', when: 'Night' }],
-      dosage: '10mg',
       frequency: 'Daily',
       establishedOn: new Date()
     },
     {
       name: 'Glipizide',
       frequencyEntries: [{ dosage: '10mg', when: 'Morning' }, { dosage: '10mg', when: 'Evening' }],
-      dosage: '10mg',
       frequency: 'Daily',
       establishedOn: new Date()
     },
     {
       name: 'Insulin',
       frequencyEntries: [{ dosage: '10mg', when: 'Morning' }],
-      dosage: '10mg',
       frequency: 'Daily',
       establishedOn: new Date()
     },
     {
       name: 'Metformin',
       frequencyEntries: [{ dosage: '10mg', when: 'Morning' }, { dosage: '10mg', when: 'Evening' }, { dosage: '20mg', when: 'Night' }],
-      dosage: '10mg',
       frequency: 'Daily',
       establishedOn: new Date()
     },
     {
       name: 'Glipizide',
       frequencyEntries: [{ dosage: '10mg', when: 'Morning' }, { dosage: '10mg', when: 'Evening' }],
-      dosage: '10mg',
       frequency: 'Daily',
       establishedOn: new Date()
     },
     {
       name: 'Insulin',
       frequencyEntries: [{ dosage: '10mg', when: 'Morning' }],
-      dosage: '10mg',
       frequency: 'Daily',
       establishedOn: new Date()
     },
     {
       name: 'Metformin',
       frequencyEntries: [{ dosage: '10mg', when: 'Morning' }, { dosage: '10mg', when: 'Evening' }, { dosage: '20mg', when: 'Night' }],
-      dosage: '10mg',
       frequency: 'Daily',
       establishedOn: new Date()
     },
     {
       name: 'Glipizide',
       frequencyEntries: [{ dosage: '10mg', when: 'Morning' }, { dosage: '10mg', when: 'Evening' }],
-      dosage: '10mg',
       frequency: 'Daily',
       establishedOn: new Date()
     },
@@ -119,7 +110,6 @@ export interface TreatmentDetails {
 
 export interface Medication {
   name: string;
-  dosage: string;
   frequency: string;
   establishedOn: Date;
   frequencyEntries: FrequencyEntry[];

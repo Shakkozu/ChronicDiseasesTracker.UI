@@ -5,17 +5,6 @@
 		</button>
 		<span class="text-title-large">{{treatment.disease}} Treatment</span>
 		<span class="flex-1"></span>
-		<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-			<mat-icon>more_vert</mat-icon>
-		</button>
-		<mat-menu #menu="matMenu">
-			<button mat-menu-item>
-				<span>Establish new treatment</span>
-			</button>
-			<button mat-menu-item [routerLink]="['/diseases', getDiseaseGuid, 'treatments']">
-				<span>Show historical treatments</span>
-			</button>
-		</mat-menu>
 	</mat-toolbar>
 
 	<div class="mt-12 mx-4 border-2 rounded-xl">
@@ -41,7 +30,7 @@
 	<div class="mt-8 mx-4">
 		<mat-list style="padding-bottom: 5rem;">
 			<div class="list-item-container" *ngFor="let medication of treatment.medications; let i = index">
-				<mat-list-item class="my-4" [routerLink]="">
+				<mat-list-item class="my-4" [routerLink]="[medication.name]">
 					<div matListItemTitle>{{medication.name}}</div>
 					<div matListItemLine><span>{{medication.frequency}}</span></div>
 					<div matListItemLine *ngFor="let frequencyEntry of medication.frequencyEntries">
