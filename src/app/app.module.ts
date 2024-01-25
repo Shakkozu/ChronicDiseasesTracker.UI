@@ -11,6 +11,7 @@ import { MobileTopAppBarComponent } from './navigation/mobile-top-app-bar/mobile
 import { StartComponent } from './start/start.component';
 import { DiseasesModule } from './diseases/diseases.module';
 import { MaterialModule } from './material.module';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { MaterialModule } from './material.module';
     BrowserAnimationsModule,
     DiseasesModule,
   ],
-  providers: [],
+  providers: [[{ provide: MAT_DATE_LOCALE, useValue: 'pl-PL' }]],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

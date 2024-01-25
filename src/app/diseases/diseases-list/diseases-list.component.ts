@@ -16,7 +16,6 @@ export class DiseasesListComponent {
   }
 
   navigateToDiseaseDetails(diseaseGuid: string) {
-    console.log(`Navigating to disease details for ${ diseaseGuid }`);
     this.router.navigate(['/diseases', diseaseGuid]);
     
   }
