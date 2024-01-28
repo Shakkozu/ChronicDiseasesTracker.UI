@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSelectChange } from '@angular/material/select';
+import { FormRecommendation, Recommendation } from '../../treatment-details/treatment-details.component';
 
 @Component({
   selector: 'app-recommendations',
@@ -9,16 +11,30 @@ import { MatSelectChange } from '@angular/material/select';
 })
 
 export class RecommendationsComponent implements OnInit {
+  private guid: string = '';
+
   public isFormValid(): boolean {
     return this.form.valid && this.frequencyEntries.length > 0;
   }
 
   save() {
-    throw new Error('Method not implemented.');
+    this.form.value;
+    const result: FormRecommendation = {
+      name: this.form.get('name')?.value,
+      establishedOn: new Date(),
+      guid: this.guid,
+      frequency: this.form.get('frequency)')?.value,
+      frequencyEntries: this.frequencyEntries.getRawValue().map((entry: any) => ({
+        when: entry.when,
+        dosage: entry.dosage
+      }))
+    }
+    this.dialogRef.close(result);
+
   }
 
   return() {
-    throw new Error('Method not implemented.');
+    this,this.dialogRef.close();
   }
 
   public customEnabledDictionary: { [key: string]: boolean } = {};
@@ -26,6 +42,7 @@ export class RecommendationsComponent implements OnInit {
   frequencyEntries: FormArray<any> = new FormArray<any>([]);
 
   ngOnInit(): void {
+    this.guid = this.data.guid ?? getNewGuid();
     this.form = this.formBuilder.group({
       name: '',
       frequency: '',
@@ -33,7 +50,11 @@ export class RecommendationsComponent implements OnInit {
     });
   }
 
-  constructor (private formBuilder: FormBuilder) { }
+  constructor (private formBuilder: FormBuilder,
+    public dialogRef: MatDialogRef<RecommendationsComponent>,
+  @Inject(MAT_DIALOG_DATA) public data: FormRecommendation) {
+
+   }
 
   addNewDosageButtonClicked(): void {
     this.frequencyEntries.push(
@@ -78,3 +99,13 @@ export class RecommendationsComponent implements OnInit {
     control.setValue(control.value);
   }
 }
+
+
+function getNewGuid(): string {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    const r = Math.random() * 16 | 0,
+      v = c === 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
+

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FrequencyEntry, Medication } from '../treatment-details/treatment-details.component';
+import { FormRecommendation, FrequencyEntry, Recommendation, SAMPLE_RECOMMENDATIONS } from '../treatment-details/treatment-details.component';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { RecommendationsComponent } from './recommendations/recommendations.component';
@@ -18,12 +18,12 @@ import { DATE_FORMAT } from '../../../shared/date-formats';
 })
 export class NewTreatmentComponent {
   public treatmentForm: FormGroup;
-  public recommendations: Medication[] = [];
+  public recommendations: FormRecommendation[] = SAMPLE_RECOMMENDATIONS;
   firstFormGroup: FormGroup = this.formBuilder.group({ firstCtrl: [''] });
   secondFormGroup: FormGroup = this.formBuilder.group({ secondCtrl: [''] });
   diseaseGuid: string = '';
-  
-  constructor (private dialog: MatDialog,
+
+  constructor(private dialog: MatDialog,
     private formBuilder: FormBuilder) {
     this.treatmentForm = this.formBuilder.group({
       treatment: '',
@@ -31,41 +31,55 @@ export class NewTreatmentComponent {
       establishedBy: '',
       establishedOn: new Date(),
       additionalInfo: '',
-      // medications: this.formBuilder.array([])
     });
-    
+
+  }
+
+  editRecommendation(recommendationGuid: string) {
+    const recommendationToModify = this.recommendations.find(rec => rec.guid === recommendationGuid);
+    const dialogRef = this.dialog.open(RecommendationsComponent, {
+      width: '500px',
+      height: '700px',
+      data: {
+        recommendation: recommendationToModify
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      const recommendationToModifyIndex = this.recommendations.findIndex(rec => rec.guid === result.guid);
+      if(recommendationToModifyIndex !== -1) {
+        this.recommendations[recommendationToModifyIndex] = result;
+      }
+    });
+  }
+
+  removeRecommendation(recommendationGuid: string) {
+    this.recommendations = this.recommendations.filter(rec => rec.guid !== recommendationGuid);
   }
   
   return() {
     window.history.back();
   }
-  
+
   save() {
     throw new Error('Method not implemented.');
   }
 
   addNewRecommendation() {
-    this.dialog.open(RecommendationsComponent, {
+    const dialogRef = this.dialog.open(RecommendationsComponent, {
       width: '500px',
       height: '700px',
-      data: { 
+      data: {
 
-       }
+      },
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.recommendations.push(result);
+
     });
   }
 
   deleteRecommendation() {
 
-  }
-
-  modifyPrescribedRecommencations() {
-    this.dialog.open(RecommendationsComponent, {
-      width: '500px',
-      height: '700px',
-      data: { 
-
-       }
-    });
   }
 }
 
@@ -76,7 +90,7 @@ export interface NewTreatmentDetails {
   establishedBy: string;
   establishedOn: Date;
   additionalInfo: string;
-  medications: Medication[];
+  medications: Recommendation[];
 }
 
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FrequencyEntry, Medication } from '../treatment-details/treatment-details.component';
+import { FrequencyEntry, Recommendation } from '../treatment-details/treatment-details.component';
 import { DateService } from '../../services/date-service';
 
 @Component({

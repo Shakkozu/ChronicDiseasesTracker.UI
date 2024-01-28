@@ -1,10 +1,10 @@
 <mat-toolbar class="pt-1">
 	<button mat-icon-button class="mt-1" aria-label="Return button" (click)="return()">
-		<mat-icon>arrow_back</mat-icon>
+		<mat-icon>close</mat-icon>
 	</button>
-	<span class="text-title-large">New recommendation</span>
+	<span class="text-title-large"></span>
 	<span class="flex-1"></span>
-	<button mat-icon-button class="mt-1" aria-label="Return button" (click)="save()" [disabled]="!isFormValid()">
+	<button mat-icon-button class="mt-1" aria-label="Save button" (click)="save()" [disabled]="!isFormValid()">
 		<mat-icon>save</mat-icon>
 	</button>
 </mat-toolbar>
@@ -16,8 +16,12 @@
 			<mat-label>Medication</mat-label>
 			<input required matInput formControlName="name">
 		</mat-form-field>
+		<mat-form-field floatLabel="always" appearance="fill" class="grid__cell">
+			<mat-label>Frequency</mat-label>
+			<input required matInput formControlName="frequency">
+		</mat-form-field>
 
-		<mat-accordion formArrayName="frequencyEntries">
+		<mat-accordion formArrayName="frequencyEntries" class="mb-4">
 			<mat-expansion-panel *ngFor="let entry of frequencyEntries.controls; let i = index" [formGroupName]="i">
 				<mat-expansion-panel-header>
 					<mat-panel-title>
@@ -26,8 +30,6 @@
 					<button (click)="removeDosageEntryButtonClicked(i)" mat-icon-button type="button">
 						<mat-icon>delete</mat-icon>
 					</button>
-					<!-- <mat-panel-description>
-					</mat-panel-description> -->
 				</mat-expansion-panel-header>
 
 				<div class="grid__cell">
@@ -53,7 +55,7 @@
 			</mat-expansion-panel>
 		</mat-accordion>
 
-		<button class="grid__cell" (click)="addNewDosageButtonClicked()" mat-fab color="primary" type="button">
+		<button class="grid__cell mt-4" (click)="addNewDosageButtonClicked()" mat-fab color="primary" type="button">
 			<mat-icon>add</mat-icon>
 		</button>
 	</form>

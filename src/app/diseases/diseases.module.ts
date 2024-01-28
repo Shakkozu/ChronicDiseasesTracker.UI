@@ -9,6 +9,7 @@ import { TreatmentsHistoryComponent } from './treatments/treatments-history/trea
 import { PrescriptionDetailsComponent } from './treatments/prescription-details/prescription-details.component';
 import { NewTreatmentComponent } from './treatments/new-treatment/new-treatment.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RecommendationsComponent } from './treatments/new-treatment/recommendations/recommendations.component';
 
 const routes: Routes = [
   { path: '', component: DiseasesListComponent },
