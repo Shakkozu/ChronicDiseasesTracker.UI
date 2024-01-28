@@ -43,9 +43,23 @@ export class RecommendationsComponent implements OnInit {
 
   ngOnInit(): void {
     this.guid = this.data.guid ?? getNewGuid();
+    
+    this.frequencyEntries = this.formBuilder.array([]);
+    if (this.data.frequencyEntries) {
+      this.data.frequencyEntries.forEach((entry: any) => {
+        this.frequencyEntries.push(
+          this.formBuilder.group({
+            dosage: [entry.dosage, Validators.required],
+            when: [entry.when, Validators.required],
+            whenCustom: [''],
+          })
+        );
+      });
+    }
+
     this.form = this.formBuilder.group({
-      name: '',
-      frequency: '',
+      name: this.data.name ?? '',
+      frequency: this.data.frequency ?? '',
       frequencyEntries: this.frequencyEntries,
     });
   }

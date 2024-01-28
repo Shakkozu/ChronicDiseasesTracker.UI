@@ -37,12 +37,11 @@ export class NewTreatmentComponent {
 
   editRecommendation(recommendationGuid: string) {
     const recommendationToModify = this.recommendations.find(rec => rec.guid === recommendationGuid);
+    console.log(recommendationToModify);
     const dialogRef = this.dialog.open(RecommendationsComponent, {
       width: '500px',
       height: '700px',
-      data: {
-        recommendation: recommendationToModify
-      }
+      data: recommendationToModify,
     });
     dialogRef.afterClosed().subscribe(result => {
       const recommendationToModifyIndex = this.recommendations.findIndex(rec => rec.guid === result.guid);
