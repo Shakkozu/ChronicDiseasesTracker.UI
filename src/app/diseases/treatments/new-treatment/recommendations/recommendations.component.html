@@ -15,22 +15,28 @@
 		<mat-form-field floatLabel="always" appearance="fill" class="grid__cell">
 			<mat-label>Recommendation</mat-label>
 			<input required matInput formControlName="name" placeholder="Medication/Recommendation">
+			<app-error-message [control]="this.form.get('name')"></app-error-message>
 		</mat-form-field>
 		<mat-form-field appearance="fill" class="grid__cell">
 			<mat-label>Frequency</mat-label>
 			<mat-select (selectionChange)="onFrequencySelectionChange($event)" formControlName="frequency">
 				<mat-option *ngFor="let option of frequencyOptions" [value]="option">{{option}}</mat-option>
 			</mat-select>
+			<app-error-message [control]="this.form.get('frequency')"></app-error-message>
 		</mat-form-field>
 		<mat-form-field *ngIf="customFrequencyOptionSelected" floatLabel="always" appearance="fill" class="grid__cell">
 			<mat-label>Frequency - Custom</mat-label>
 			<input required matInput formControlName="frequencyCustom">
+			<app-error-message [control]="this.form.get('frequencyCustom')"></app-error-message>
 		</mat-form-field>
 
 		<mat-accordion formArrayName="frequencyEntries" class="grid__cell">
 			<mat-expansion-panel *ngFor="let entry of frequencyEntries.controls; let i = index" [formGroupName]="i" [expanded]="true">
 				<mat-expansion-panel-header>
 					<mat-panel-title>
+						<div *ngIf="entry.invalid && entry.touched" class="icon-container mr-2 text-red-500">
+							<mat-icon>warning</mat-icon>
+						</div>
 						Entry {{ i + 1 }}
 					</mat-panel-title>
 					<button [disabled]="this.frequencyEntries.length <= 1" (click)="removeDosageEntryButtonClicked(i)" mat-icon-button type="button">
@@ -41,11 +47,11 @@
 				<mat-form-field class="grid__cell" appearance="fill">
 					<mat-label>Dosage</mat-label>
 					<input matInput formControlName="dosage">
+					<app-error-message [control]="entry.get('dosage')"></app-error-message>
 				</mat-form-field>
 
 				<mat-form-field appearance="fill" class="grid__cell">
 					<mat-label>When</mat-label>
-
 					<mat-select (selectionChange)="onSelectionChange($event, i)" formControlName="when">
 						<mat-optgroup label="Group 1 - Daily">
 							<mat-option *ngFor="let time of timeOfDayOptions" [value]="time">
@@ -60,10 +66,11 @@
 						<mat-option value="Custom">Custom</mat-option>
 					</mat-select>
 				</mat-form-field>
-
+				
 				<mat-form-field class="grid__cell" *ngIf="isCustomFormVisible(i)" appearance="fill">
 					<mat-label>When - Custom</mat-label>
 					<input matInput formControlName="whenCustom">
+					<app-error-message [control]="entry.get('whenCustom')"></app-error-message>
 				</mat-form-field>
 			</mat-expansion-panel>
 		</mat-accordion>
