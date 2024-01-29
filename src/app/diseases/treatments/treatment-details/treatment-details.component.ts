@@ -96,7 +96,7 @@ export const SAMPLE_RECOMMENDATIONS : FormRecommendation[] = [
     establishedOn: new Date(),
     guid: '00000000-0000-0000-0000-000000000003',
     frequencyEntries: [
-      { dosage: '20mg', when: 'Monday' },
+      { dosage: '20mg', when: 'Monday-Saturday' },
       { dosage: '30mg', when: 'Wednesday' },
       { dosage: '40mg', when: 'Friday' }
     ]

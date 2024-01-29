@@ -2,7 +2,7 @@ import { Component, Inject, OnInit, Type } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSelectChange } from '@angular/material/select';
-import { FormRecommendation, Recommendation } from '../../treatment-details/treatment-details.component';
+import { FormRecommendation, FrequencyEntry, Recommendation } from '../../treatment-details/treatment-details.component';
 
 @Component({
   selector: 'app-recommendations',
@@ -19,6 +19,7 @@ export class RecommendationsComponent implements OnInit {
   public isFormValid(): boolean {
     return this.form.valid && this.frequencyEntries.length > 0;
   }
+
 
   save() {
     this.form.value;
@@ -46,19 +47,8 @@ export class RecommendationsComponent implements OnInit {
 
   ngOnInit(): void {
     this.guid = this.data.guid ?? getNewGuid();
+    this.frequencyEntries = this.initializeFrequencyEntries(this.data.frequencyEntries);    
     
-    this.frequencyEntries = this.formBuilder.array([]);
-    if (this.data.frequencyEntries) {
-      this.data.frequencyEntries.forEach((entry: any) => {
-        this.frequencyEntries.push(
-          this.formBuilder.group({
-            dosage: [entry.dosage, Validators.required],
-            when: [entry.when, Validators.required],
-            whenCustom: [''],
-          })
-        );
-      });
-    }
 
     this.form = this.formBuilder.group({
       name: this.data.name ?? '',
@@ -66,6 +56,47 @@ export class RecommendationsComponent implements OnInit {
       frequencyCustom: this.data.frequency ?? '',
       frequencyEntries: this.frequencyEntries,
     });
+  }
+
+  initializeFrequencyEntries(entries: FrequencyEntry[]) : FormArray {
+    let result: FormArray<any> = new FormArray<any>([]);
+    if (!entries)
+      return result;
+
+    for (let index = 0; index < entries.length; index++) {
+      const entry = entries[index];
+      const isCustomEntry = this.isFrequencyEntryCustomValue(entry.when);
+      const when = isCustomEntry ? 'Custom' : entry.when;
+      const whenCustom = isCustomEntry ? entry.when : '';
+      let group = this.formBuilder.group({
+          dosage: [entry.dosage, Validators.required],
+          when: [when, Validators.required],
+          whenCustom: isCustomEntry ? [whenCustom, Validators.required] : [whenCustom],
+      });
+      result.push(group);
+
+      if (isCustomEntry) {
+        this.customEnabledDictionary[index] = true;
+      }
+
+    }
+    entries.forEach((entry: any) => {
+        const isCustomEntry = this.isFrequencyEntryCustomValue(entry.when);
+        if (isCustomEntry) {
+
+        }
+        const when = isCustomEntry ? 'Custom' : entry.when;
+        const whenCustom = isCustomEntry ? entry.when : '';
+        this.frequencyEntries.push(
+          this.formBuilder.group({
+            dosage: [entry.dosage, Validators.required],
+            when: [when, Validators.required],
+            whenCustom: [whenCustom],
+          })
+        );
+      });
+
+    return result;
   }
 
   constructor (private formBuilder: FormBuilder,
@@ -84,6 +115,12 @@ export class RecommendationsComponent implements OnInit {
     );
   }
 
+  isFrequencyEntryCustomValue(value: string) {
+    return this.timeOfDayOptions.find(tod => tod === value) === undefined
+      && this.dayOfWeekOptions.find(dow => dow === value) === undefined
+
+  }
+
   removeDosageEntryButtonClicked(index: number) {
     this.frequencyEntries.removeAt(index);
   }
@@ -99,12 +136,13 @@ export class RecommendationsComponent implements OnInit {
   onFrequencySelectionChange(event: MatSelectChange) {
     const customOptionSelected = event.value === 'Custom';
     if (customOptionSelected) {
-      this.form.get('frequencyCustom')?.setValidators(Validators.required);
+      this.form.controls['frequencyCustom'].setValidators(Validators.required);
     }
     else {
-
-      this.form.get('frequencyCustom')?.clearValidators();
+      this.form.controls['frequencyCustom'].clearValidators();
+      this.form.controls['frequencyCustom'].updateValueAndValidity();
     }
+    this.form.updateValueAndValidity();
    }
 
 
