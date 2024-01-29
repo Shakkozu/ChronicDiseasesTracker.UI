@@ -35,21 +35,7 @@ export class NewTreatmentComponent {
 
   }
 
-  editRecommendation(recommendationGuid: string) {
-    const recommendationToModify = this.recommendations.find(rec => rec.guid === recommendationGuid);
-    console.log(recommendationToModify);
-    const dialogRef = this.dialog.open(RecommendationsComponent, {
-      width: '500px',
-      height: '700px',
-      data: recommendationToModify,
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      const recommendationToModifyIndex = this.recommendations.findIndex(rec => rec.guid === result.guid);
-      if(recommendationToModifyIndex !== -1) {
-        this.recommendations[recommendationToModifyIndex] = result;
-      }
-    });
-  }
+
 
   removeRecommendation(recommendationGuid: string) {
     this.recommendations = this.recommendations.filter(rec => rec.guid !== recommendationGuid);
@@ -72,13 +58,30 @@ export class NewTreatmentComponent {
       },
     });
     dialogRef.afterClosed().subscribe(result => {
+      if (!result)
+        return;
+
       this.recommendations.push(result);
 
     });
   }
+  
+  editRecommendation(recommendationGuid: string) {
+    const recommendationToModify = this.recommendations.find(rec => rec.guid === recommendationGuid);
+    const dialogRef = this.dialog.open(RecommendationsComponent, {
+      width: '500px',
+      height: '700px',
+      data: recommendationToModify,
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (!result)
+        return;
 
-  deleteRecommendation() {
-
+      const recommendationToModifyIndex = this.recommendations.findIndex(rec => rec.guid === result.guid);
+      if(recommendationToModifyIndex !== -1) {
+        this.recommendations[recommendationToModifyIndex] = result;
+      }
+    });
   }
 }
 
