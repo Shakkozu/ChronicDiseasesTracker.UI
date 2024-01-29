@@ -16,9 +16,15 @@
 			<mat-label>Medication</mat-label>
 			<input required matInput formControlName="name">
 		</mat-form-field>
-		<mat-form-field floatLabel="always" appearance="fill" class="grid__cell">
+		<mat-form-field appearance="fill" class="grid__cell">
 			<mat-label>Frequency</mat-label>
-			<input required matInput formControlName="frequency">
+			<mat-select (selectionChange)="onFrequencySelectionChange($event)" formControlName="frequency">
+				<mat-option *ngFor="let option of frequencyOptions" [value]="option">{{option}}</mat-option>
+			</mat-select>
+		</mat-form-field>
+		<mat-form-field *ngIf="customFrequencyOptionSelected" floatLabel="always" appearance="fill" class="grid__cell">
+			<mat-label>Frequency - Custom</mat-label>
+			<input required matInput formControlName="frequencyCustom">
 		</mat-form-field>
 
 		<mat-accordion formArrayName="frequencyEntries" class="mb-4">
@@ -41,10 +47,24 @@
 
 				<mat-form-field appearance="fill" class="grid__cell">
 					<mat-label>When</mat-label>
-					<mat-select (selectionChange)="onSelectionChange($event, i)" formControlName="when">
-						<mat-option value="custom">Custom</mat-option>
+					<!-- <mat-select (selectionChange)="onSelectionChange($event, i)" formControlName="when">
+						<mat-option value="Custom">Custom</mat-option>
 						<mat-option value="Morning">Morning</mat-option>
 						<mat-option value="Evening">Evening</mat-option>
+					</mat-select> -->
+
+					<mat-select (selectionChange)="onSelectionChange($event, i)" formControlName="when">
+						<mat-optgroup label="Group 1 - Daily">
+							<mat-option *ngFor="let time of timeOfDayOptions" [value]="time">
+								{{ time }}
+							</mat-option>
+						</mat-optgroup>
+						<mat-optgroup label="Group 2 - Weekly">
+							<mat-option *ngFor="let day of dayOfWeekOptions" [value]="day">
+								{{ day }}
+							</mat-option>
+						</mat-optgroup>
+						<mat-option value="Custom">Custom</mat-option>
 					</mat-select>
 				</mat-form-field>
 

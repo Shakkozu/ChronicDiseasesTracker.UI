@@ -10,30 +10,29 @@
 		</button>
 	</mat-toolbar>
 
-	<div class="h-12 w-full"></div>
-	<div class="mx-4">
+	<div>
 		<mat-vertical-stepper [linear]="false" #stepper animationDuration="700">
 			<mat-step [stepControl]="treatmentForm">
-				<form [formGroup]="treatmentForm" class="my-4">
+				<form [formGroup]="treatmentForm">
 					<ng-template matStepLabel>Fill basic information</ng-template>
-					<mat-form-field floatLabel="always" appearance="fill" class="w-80">
+					<mat-form-field floatLabel="always" appearance="fill" class="w-72">
 						<mat-label>Treatment</mat-label>
 						<input required="treatment" matNativeControl formControlName="treatment">
 					</mat-form-field>
 
-					<mat-form-field floatLabel="always" appearance="fill" class="w-80">
+					<mat-form-field floatLabel="always" appearance="fill" class="w-72">
 						<mat-label>Established By</mat-label>
 						<input required matInput formControlName="establishedBy">
 					</mat-form-field>
 
-					<mat-form-field appearance="fill" floatLabel="always" class="w-80">
+					<mat-form-field appearance="fill" floatLabel="always" class="w-72">
 						<mat-label>Start Date</mat-label>
 						<input matInput [matDatepicker]="picker" formControlName="startDate">
 						<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
 						<mat-datepicker #picker></mat-datepicker>
 					</mat-form-field>
 
-					<mat-form-field appearance="fill" floatLabel="always" class="w-80">
+					<mat-form-field appearance="fill" floatLabel="always" class="w-72">
 						<mat-label>Established On</mat-label>
 						<input matInput [matDatepicker]="establishedOnPicker" formControlName="establishedOn">
 						<mat-datepicker-toggle matSuffix [for]="establishedOnPicker"></mat-datepicker-toggle>
@@ -77,14 +76,14 @@
 
 					<button (click)="addNewRecommendation()" mat-fab><mat-icon>add</mat-icon></button>
 			</mat-step>
-			<!-- <mat-step>
+			<mat-step>
 				<ng-template matStepLabel>Done</ng-template>
 				You are now done.
 				<div>
 					<button mat-button matStepperPrevious>Back</button>
 					<button mat-button (click)="stepper.reset()">Reset</button>
 				</div>
-			</mat-step> -->
+			</mat-step>
 		</mat-vertical-stepper>
 	</div>
 </div>

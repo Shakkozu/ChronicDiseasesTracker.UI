@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Type } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSelectChange } from '@angular/material/select';
@@ -11,6 +11,9 @@ import { FormRecommendation, Recommendation } from '../../treatment-details/trea
 })
 
 export class RecommendationsComponent implements OnInit {
+  public frequencyOptions = Object.values(FrequencyOptions);
+  public timeOfDayOptions = Object.values(TimeOfDay);
+  public dayOfWeekOptions = Object.values(DayOfWeek);
   private guid: string = '';
 
   public isFormValid(): boolean {
@@ -24,8 +27,8 @@ export class RecommendationsComponent implements OnInit {
       establishedOn: new Date(),
       guid: this.guid,
       frequency: this.form.get('frequency)')?.value,
-      frequencyEntries: this.frequencyEntries.getRawValue().map((entry: any) => ({
-        when: entry.when,
+      frequencyEntries: this.frequencyEntries.getRawValue().map((entry: FrequencyOptionForm) => ({
+        when: entry.when === FrequencyOptions.Custom ? entry.whenCustom : entry.when,
         dosage: entry.dosage
       }))
     }
@@ -59,7 +62,8 @@ export class RecommendationsComponent implements OnInit {
 
     this.form = this.formBuilder.group({
       name: this.data.name ?? '',
-      frequency: this.data.frequency ?? '',
+      frequency: this.data.frequency ?? FrequencyOptions.Daily,
+      frequencyCustom: this.data.frequency ?? '',
       frequencyEntries: this.frequencyEntries,
     });
   }
@@ -88,8 +92,24 @@ export class RecommendationsComponent implements OnInit {
     return this.customEnabledDictionary[index];
   }
 
+  public get customFrequencyOptionSelected(): boolean {
+    return this.form.get('frequency')?.value === 'Custom';
+  }
+
+  onFrequencySelectionChange(event: MatSelectChange) {
+    const customOptionSelected = event.value === 'Custom';
+    if (customOptionSelected) {
+      this.form.get('frequencyCustom')?.setValidators(Validators.required);
+    }
+    else {
+
+      this.form.get('frequencyCustom')?.clearValidators();
+    }
+   }
+
+
   onSelectionChange(event: MatSelectChange, index: number) {
-    const customOptionSelected = event.value === 'custom';
+    const customOptionSelected = event.value === 'Custom';
     if (customOptionSelected) {
       this.customEnabledDictionary[index] = true;
       this.form.get('frequencyEntries')?.get(
@@ -123,3 +143,30 @@ function getNewGuid(): string {
   });
 }
 
+interface FrequencyOptionForm {
+  whenCustom: string;
+  when: string;
+  dosage: string;
+}
+
+export enum FrequencyOptions {
+  Daily = 'Daily',
+  Weekly = 'Weekly',
+  Custom = 'Custom',
+}
+
+export enum TimeOfDay {
+  Morning = 'Morning',
+  Evening = 'Evening',
+  AfterMeal = 'AfterMeal',
+}
+
+export enum DayOfWeek {
+  Monday = 'Monday',
+  Tuesday = 'Tuesday',
+  Wednesday = 'Wednesday',
+  Thursday = 'Thursday',
+  Friday = 'Friday',
+  Saturday = 'Saturday',
+  Sunday = 'Sunday',
+}
