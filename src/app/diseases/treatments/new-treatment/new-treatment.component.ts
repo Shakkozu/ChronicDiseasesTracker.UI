@@ -60,13 +60,12 @@ export class NewTreatmentComponent {
     const dialogRef = this.dialog.open(RecommendationsComponent, {
       width: '500px',
       height: '700px',
-      data: {
-
-      },
+      data: {}
     });
     dialogRef.afterClosed().subscribe(result => {
       if (!result)
         return;
+      console.log(result);
 
       this.recommendations.push(result);
 

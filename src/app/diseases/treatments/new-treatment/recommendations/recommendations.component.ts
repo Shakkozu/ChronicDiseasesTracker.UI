@@ -39,12 +39,13 @@ export class RecommendationsComponent implements OnInit {
   }
 
   public save() {
-    this.form.value;
     const result: FormRecommendation = {
       name: this.form.get('name')?.value,
+      frequency: this.form.controls['frequency']?.value === 'Custom'
+        ? this.form.controls['frequencyCustom']?.value
+        : this.form.controls['frequency']?.value,
       establishedOn: new Date(),
       guid: this.data.guid ?? getNewGuid(),
-      frequency: this.form.get('frequency)')?.value,
       frequencyEntries: this.frequencyEntries.getRawValue().map((entry: FrequencyOptionForm) => ({
         when: entry.when === FrequencyOptions.Custom ? entry.whenCustom : entry.when,
         dosage: entry.dosage
