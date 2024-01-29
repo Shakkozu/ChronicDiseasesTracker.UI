@@ -7,6 +7,8 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/materia
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DATE_FORMAT } from '../../../shared/date-formats';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
+import { ConfirmationDialogComponent, ConfirmationDialogResult } from '../../../shared/confirmation-dialog/confirmation-dialog.component';
+import { Result } from 'postcss';
 
 @Component({
   selector: 'app-new-treatment',
@@ -15,7 +17,7 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
   providers: [
     { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
     { provide: MAT_DATE_FORMATS, useValue: DATE_FORMAT },
-    { provide: STEPPER_GLOBAL_OPTIONS, useValue: { showError: true}}
+    { provide: STEPPER_GLOBAL_OPTIONS, useValue: { showError: true } }
   ],
 })
 export class NewTreatmentComponent {
@@ -25,7 +27,7 @@ export class NewTreatmentComponent {
   secondFormGroup: FormGroup = this.formBuilder.group({ secondCtrl: [''] });
   diseaseGuid: string = '';
 
-  constructor(private dialog: MatDialog,
+  constructor (private dialog: MatDialog,
     private formBuilder: FormBuilder) {
     this.treatmentForm = this.formBuilder.group({
       treatment: '',
@@ -47,9 +49,19 @@ export class NewTreatmentComponent {
   removeRecommendation(recommendationGuid: string) {
     this.recommendations = this.recommendations.filter(rec => rec.guid !== recommendationGuid);
   }
-  
+
   return() {
-    window.history.back();
+    if (!this.treatmentForm.dirty)
+      window.history.back();
+
+    this.dialog.open<ConfirmationDialogComponent, any, ConfirmationDialogResult>(ConfirmationDialogComponent)
+      .afterClosed()
+      .subscribe((result: ConfirmationDialogResult | undefined) => {
+        if (result && result.Confirmed) {
+          window.history.back();
+        }
+      });
+
   }
 
   save() {
@@ -71,7 +83,7 @@ export class NewTreatmentComponent {
 
     });
   }
-  
+
   editRecommendation(recommendationGuid: string) {
     const recommendationToModify = this.recommendations.find(rec => rec.guid === recommendationGuid);
     const dialogRef = this.dialog.open(RecommendationsComponent, {
@@ -84,7 +96,7 @@ export class NewTreatmentComponent {
         return;
 
       const recommendationToModifyIndex = this.recommendations.findIndex(rec => rec.guid === result.guid);
-      if(recommendationToModifyIndex !== -1) {
+      if (recommendationToModifyIndex !== -1) {
         this.recommendations[recommendationToModifyIndex] = result;
       }
     });

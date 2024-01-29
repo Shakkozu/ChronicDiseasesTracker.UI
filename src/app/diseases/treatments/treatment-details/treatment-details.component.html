@@ -41,13 +41,18 @@
 	<div class="mt-8 mx-4">
 		<mat-list style="padding-bottom: 5rem;">
 			<div class="list-item-container" *ngFor="let medication of treatment.recommendations; let i = index">
-				<mat-list-item class="my-4" [routerLink]="[medication.name]">
+				<mat-list-item class="my-4">
 					<div matListItemTitle>{{medication.name}}</div>
 					<div matListItemLine><span>{{medication.frequency}}</span></div>
 					<div matListItemLine *ngFor="let frequencyEntry of medication.frequencyEntries">
 						{{frequencyEntry.when}} - {{frequencyEntry.dosage}}
 					</div>
-					<div matListItemMeta>{{medication.establishedOn | date}}</div>
+					<div matListItemMeta>
+						{{medication.establishedOn | date}}
+						<button mat-icon-button color="primary" [routerLink]="[medication.name]">
+							<mat-icon>history</mat-icon>
+						</button>
+					</div>
 				</mat-list-item>
 				<mat-divider />
 			</div>

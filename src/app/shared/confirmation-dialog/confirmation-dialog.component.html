@@ -1,0 +1,9 @@
+<div class="p-8">
+
+	<h1 class="" mat-dialog-title>{{title}}</h1>
+	<div mat-dialog-content>{{content}}</div>
+	<div mat-dialog-actions class="mt-3">
+		<button class="m-2" (click)="reject()" mat-button mat-dialog-close>Close</button>
+		<button class="m-2" (click)="confirm()" mat-flat-button color="primary" mat-dialog-confirm>Confirm</button>
+	</div>
+</div>
