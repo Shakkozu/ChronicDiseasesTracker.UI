@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSelectChange } from '@angular/material/select';
 import { FormRecommendation, FrequencyEntry, Recommendation } from '../../treatment-details/treatment-details.component';
+import { getNewGuid } from '../../../../shared/create-guid-service';
 
 @Component({
   selector: 'app-recommendations',
@@ -180,15 +181,6 @@ export class RecommendationsComponent implements OnInit {
   }
 }
 
-
-function getNewGuid(): string {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-    const r = Math.random() * 16 | 0,
-      v = c === 'x' ? r : (r & 0x3 | 0x8);
-    return v.toString(16);
-  });
-}
-
 interface FrequencyOptionForm {
   whenCustom: string;
   when: string;
@@ -215,4 +207,6 @@ export enum DayOfWeek {
   Friday = 'Friday',
   Saturday = 'Saturday',
   Sunday = 'Sunday',
+  Weekend = 'At The Weekend',
+  Week = 'During The Week',
 }

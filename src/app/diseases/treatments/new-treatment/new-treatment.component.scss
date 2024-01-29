@@ -1,0 +1,12 @@
+.step-content-container {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.step-actions {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 0;
+	margin-right: 2.5rem;
+}

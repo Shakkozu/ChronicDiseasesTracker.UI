@@ -32,10 +32,11 @@ export class NewTreatmentComponent {
       establishedOn: new Date(),
       additionalInfo: '',
     });
-
   }
 
-
+  public isValid(): boolean {
+    return this.treatmentForm.valid && this.recommendations.length > 0;
+  }
 
   removeRecommendation(recommendationGuid: string) {
     this.recommendations = this.recommendations.filter(rec => rec.guid !== recommendationGuid);
