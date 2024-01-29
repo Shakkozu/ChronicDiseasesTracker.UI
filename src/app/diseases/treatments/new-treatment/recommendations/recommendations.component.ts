@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, Type } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSelectChange } from '@angular/material/select';
@@ -60,8 +60,15 @@ export class RecommendationsComponent implements OnInit {
 
   initializeFrequencyEntries(entries: FrequencyEntry[]) : FormArray {
     let result: FormArray<any> = new FormArray<any>([]);
-    if (!entries)
+    if (!entries) {
+      let group = this.formBuilder.group({
+        dosage: ['', Validators.required],
+        when: ['', Validators.required],
+        whenCustom: [''],
+      });
+      result.push(group);
       return result;
+    }
 
     for (let index = 0; index < entries.length; index++) {
       const entry = entries[index];
@@ -122,6 +129,7 @@ export class RecommendationsComponent implements OnInit {
   }
 
   removeDosageEntryButtonClicked(index: number) {
+    if (this.frequencyEntries.length <= 1) return;
     this.frequencyEntries.removeAt(index);
   }
 

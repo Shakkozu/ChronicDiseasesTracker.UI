@@ -13,7 +13,7 @@
 	<div>
 		<mat-vertical-stepper [linear]="false" #stepper animationDuration="700">
 			<mat-step [stepControl]="treatmentForm">
-				<form [formGroup]="treatmentForm">
+				<form [formGroup]="treatmentForm" class="mt-4">
 					<ng-template matStepLabel>Fill basic information</ng-template>
 					<mat-form-field floatLabel="always" appearance="fill" class="w-72">
 						<mat-label>Treatment</mat-label>
@@ -38,7 +38,7 @@
 						<mat-datepicker-toggle matSuffix [for]="establishedOnPicker"></mat-datepicker-toggle>
 						<mat-datepicker #establishedOnPicker></mat-datepicker>
 					</mat-form-field>
-					<div>
+					<div class="ms-32">
 						<button mat-raised-button matStepperNext color="primary">Next</button>
 					</div>
 				</form>
@@ -50,7 +50,7 @@
 					Recommendations list is empty
 				</p>
 
-				<div class="mt-8 mx-4">
+				<div class="">
 					<mat-list>
 						<div class="list-item-container" *ngFor="let recommendation of recommendations; let i = index">
 							<mat-list-item class="my-4">
@@ -67,22 +67,10 @@
 							<mat-divider />
 						</div>
 					</mat-list>
-					<button (click)="addNewRecommendation()"
-						 color="primary" mat-fab><mat-icon>add</mat-icon></button>
 				</div>
+				<div class="flex flex-end fixed right-4">
 
-					<div class="mt-8">
-						<button mat-button matStepperPrevious>Back</button>
-						<button mat-raised-button matStepperNext color="primary">Next</button>
-					</div>
-
-			</mat-step>
-			<mat-step>
-				<ng-template matStepLabel>Done</ng-template>
-				You are now done.
-				<div>
-					<button mat-button matStepperPrevious>Back</button>
-					<button mat-button (click)="stepper.reset()">Reset</button>
+					<button (click)="addNewRecommendation()" color="primary" mat-fab><mat-icon>add</mat-icon></button>
 				</div>
 			</mat-step>
 		</mat-vertical-stepper>
