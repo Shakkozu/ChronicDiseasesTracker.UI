@@ -1,5 +1,5 @@
 <div class="container mt-4">
-	<mat-toolbar class="pt-1">
+	<mat-toolbar class="pt-1" color="primary">
 		<button mat-icon-button class="mt-1" aria-label="Return button" (click)="return()">
 			<mat-icon>arrow_back</mat-icon>
 		</button>
@@ -39,7 +39,7 @@
 						<mat-datepicker #establishedOnPicker></mat-datepicker>
 					</mat-form-field>
 					<div>
-						<button mat-raised-button matStepperNext>Next</button>
+						<button mat-raised-button matStepperNext color="primary">Next</button>
 					</div>
 				</form>
 			</mat-step>
@@ -51,7 +51,7 @@
 				</p>
 
 				<div class="mt-8 mx-4">
-					<mat-list style="padding-bottom: 5rem;">
+					<mat-list>
 						<div class="list-item-container" *ngFor="let recommendation of recommendations; let i = index">
 							<mat-list-item class="my-4">
 								<div matListItemTitle>{{recommendation.name}}</div>
@@ -67,14 +67,15 @@
 							<mat-divider />
 						</div>
 					</mat-list>
+					<button (click)="addNewRecommendation()"
+						 color="primary" mat-fab><mat-icon>add</mat-icon></button>
 				</div>
 
-					<div>
+					<div class="mt-8">
 						<button mat-button matStepperPrevious>Back</button>
-						<button mat-raised-button matStepperNext>Next</button>
+						<button mat-raised-button matStepperNext color="primary">Next</button>
 					</div>
 
-					<button (click)="addNewRecommendation()" mat-fab><mat-icon>add</mat-icon></button>
 			</mat-step>
 			<mat-step>
 				<ng-template matStepLabel>Done</ng-template>
