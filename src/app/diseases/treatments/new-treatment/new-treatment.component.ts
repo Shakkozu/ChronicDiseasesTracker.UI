@@ -6,6 +6,7 @@ import { RecommendationsComponent } from './recommendations/recommendations.comp
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DATE_FORMAT } from '../../../shared/date-formats';
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 
 @Component({
   selector: 'app-new-treatment',
@@ -14,6 +15,7 @@ import { DATE_FORMAT } from '../../../shared/date-formats';
   providers: [
     { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
     { provide: MAT_DATE_FORMATS, useValue: DATE_FORMAT },
+    { provide: STEPPER_GLOBAL_OPTIONS, useValue: { showError: true}}
   ],
 })
 export class NewTreatmentComponent {
@@ -36,6 +38,10 @@ export class NewTreatmentComponent {
 
   public isValid(): boolean {
     return this.treatmentForm.valid && this.recommendations.length > 0;
+  }
+
+  public getControl(name: string) {
+    return this.treatmentForm.get(name);
   }
 
   removeRecommendation(recommendationGuid: string) {

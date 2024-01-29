@@ -10,6 +10,7 @@ import { PrescriptionDetailsComponent } from './treatments/prescription-details/
 import { NewTreatmentComponent } from './treatments/new-treatment/new-treatment.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RecommendationsComponent } from './treatments/new-treatment/recommendations/recommendations.component';
+import { SharedModule } from '../shared/shared.module';
 
 const routes: Routes = [
   { path: '', component: DiseasesListComponent },
@@ -29,9 +30,11 @@ const routes: Routes = [
     PrescriptionDetailsComponent,
     NewTreatmentComponent,
     RecommendationsComponent,
+
   ],
   imports: [
     MaterialModule,
+    SharedModule,
     CommonModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes)

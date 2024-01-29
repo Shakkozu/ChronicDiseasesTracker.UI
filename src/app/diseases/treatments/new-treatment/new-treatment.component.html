@@ -19,25 +19,29 @@
 						<mat-form-field floatLabel="always" appearance="fill" class="w-72">
 							<mat-label>Treatment</mat-label>
 							<input required="treatment" matNativeControl formControlName="treatment">
+							<app-error-message [control]="getControl('treatment')"></app-error-message>
 						</mat-form-field>
 
 						<mat-form-field floatLabel="always" appearance="fill" class="w-72">
 							<mat-label>Established By</mat-label>
-							<input required matInput formControlName="establishedBy">
+							<input required matInput formControlName="establishedBy" placeholder="Doctor name">
+							<app-error-message [control]="getControl('establishedBy')"></app-error-message>
 						</mat-form-field>
 
 						<mat-form-field appearance="fill" floatLabel="always" class="w-72">
 							<mat-label>Start Date</mat-label>
-							<input matInput [matDatepicker]="picker" formControlName="startDate">
+							<input matInput [matDatepicker]="picker" required formControlName="startDate">
 							<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
 							<mat-datepicker #picker></mat-datepicker>
+							<app-error-message [control]="getControl('startDate')"></app-error-message>
 						</mat-form-field>
 
 						<mat-form-field appearance="fill" floatLabel="always" class="w-72">
 							<mat-label>Established On</mat-label>
-							<input matInput [matDatepicker]="establishedOnPicker" formControlName="establishedOn">
+							<input matInput required [matDatepicker]="establishedOnPicker" formControlName="establishedOn">
 							<mat-datepicker-toggle matSuffix [for]="establishedOnPicker"></mat-datepicker-toggle>
 							<mat-datepicker #establishedOnPicker></mat-datepicker>
+							<app-error-message [control]="getControl('establishedOn')"></app-error-message>
 						</mat-form-field>
 					</form>
 				</div>

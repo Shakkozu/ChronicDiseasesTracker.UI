@@ -12,6 +12,7 @@ import { StartComponent } from './start/start.component';
 import { DiseasesModule } from './diseases/diseases.module';
 import { MaterialModule } from './material.module';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    SharedModule,
     DiseasesModule,
   ],
   providers: [[{ provide: MAT_DATE_LOCALE, useValue: 'pl-PL' }]],
