@@ -40,16 +40,16 @@
 
 	<div class="mt-8 mx-4">
 		<mat-list style="padding-bottom: 5rem;">
-			<div class="list-item-container" *ngFor="let medication of treatment.recommendations; let i = index">
+			<div class="list-item-container" *ngFor="let recommendation of treatment.recommendations; let i = index">
 				<mat-list-item class="my-4">
-					<div matListItemTitle>{{medication.name}}</div>
-					<div matListItemLine><span>{{medication.frequency}}</span></div>
-					<div matListItemLine *ngFor="let frequencyEntry of medication.frequencyEntries">
+					<div matListItemTitle>{{recommendation.name}}</div>
+					<div matListItemLine><span>{{recommendation.frequency}}</span></div>
+					<div matListItemLine *ngFor="let frequencyEntry of recommendation.frequencyEntries">
 						{{frequencyEntry.when}} - {{frequencyEntry.dosage}}
 					</div>
 					<div matListItemMeta>
-						{{medication.establishedOn | date}}
-						<button mat-icon-button color="primary" [routerLink]="[medication.name]">
+						{{recommendation.establishedOn | date}}
+						<button mat-icon-button color="primary" [routerLink]="[getLinkToRecommendationHistory(recommendation)]">
 							<mat-icon>history</mat-icon>
 						</button>
 					</div>

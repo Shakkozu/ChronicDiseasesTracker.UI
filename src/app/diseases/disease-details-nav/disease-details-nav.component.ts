@@ -30,7 +30,7 @@ export class DiseaseDetailsNavComponent {
 
   navigateToDetails(item: any) {
     if (item !== 'Treatment') return;
-    const route = '/diseases/' + this.disease.guid + '/treatments/' + this.disease.currentTreatmentGuid;
+    const route = '/diseases/' + encodeURI(this.disease.name) + '/treatments/' + this.disease.currentTreatmentGuid;
     this.router.navigate([route]);
   }
 
@@ -38,7 +38,7 @@ export class DiseaseDetailsNavComponent {
 
 
 const SAMPLE_DATA: Disease = {
-  name: 'Diabetes',
+  name: 'Diabetes Test',
   guid: '00000000-1111-2222-3333-44444444',
   currentTreatmentGuid: '00000000-1111-2222-3333-44444444',
 }

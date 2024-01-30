@@ -26,6 +26,10 @@ export class TreatmentDetailsComponent {
     return establishedBy.split(' ').map(n => n[0]).join('').substring(1,3);
   }
 
+  getLinkToRecommendationHistory(recommendation: Recommendation) {
+    return encodeURI(recommendation.name);
+  }
+
 }
 
 export const SAMPLE_DATA: TreatmentDetails = {
@@ -44,7 +48,7 @@ export const SAMPLE_DATA: TreatmentDetails = {
       establishedOn: new Date(),
     },
     {
-      name: 'Metformin',
+      name: 'Met formin',
       frequencyEntries: [{ dosage: '10mg', when: 'Monday trough saturday' }, { dosage: '20mg', when: 'sunday' }],
       frequency: 'Weekly',
       establishedOn: new Date(),
