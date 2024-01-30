@@ -1,6 +1,4 @@
-import { Injectable } from "@angular/core";
-import { Action, State, StateContext } from "@ngxs/store";
-import { DiseasesInMemoryService, DiseasesService } from "../services/diseases.service";
+import { DiseaseDetails } from "../model/model";
 
 export namespace Diseases {
 	export class FetchAll {
@@ -10,20 +8,9 @@ export namespace Diseases {
 }
 
 export interface DiseasesStateModel {
-
+	diseases: DiseaseDetails[];
+	loading: boolean;
+	error?: string;
 }
 
-@State<DiseasesStateModel>({
-	name: 'diseases',
-	defaults: []
-})
-@Injectable()
-export class DiseasesState {
-	constructor(private diseaseService: DiseasesInMemoryService) {}
-	@Action(Diseases.FetchAll)
-	fetchAllUserDiseases(ctx: StateContext<DiseasesStateModel>) {
-		this.diseaseService.fetchAllDiseases()
-
-	}
-}
 

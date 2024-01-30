@@ -1,3 +1,11 @@
+export interface DiseaseDetails {
+	name: string;
+	guid: string;
+	currentTreatmentGuid: string;
+	currentTreatment: TreatmentDetails;
+	historicalTreatments: TreatmentDetails[];
+}
+
 export interface TreatmentDetails {
 	guid: string;
 	diseaseGuid: string;
@@ -27,13 +35,6 @@ export interface FrequencyEntry {
 	when: string;
 }
 
-export interface DiseaseDetails {
-	name: string;
-	guid: string;
-	currentTreatmentGuid: string;
-	currentTreatment: TreatmentDetails;
-	historicalTreatments: TreatmentDetails[];
-}
 
 
 export interface NewTreatmentDetails {
