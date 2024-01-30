@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { DateService } from '../../services/date-service';
+import { DateService } from '../../../services/date-service';
+import { TreatmentDetails, Recommendation, FormRecommendation } from '../../../model/model';
 
 @Component({
   selector: 'app-treatment-details',
@@ -56,35 +57,7 @@ export const SAMPLE_DATA: TreatmentDetails = {
   ]
 };
 
-export interface TreatmentDetails {
-  guid: string;
-  diseaseGuid: string;
-  disease: string;
-  treatment: string;
-  establishedBy: string;
-  establishedOn: Date;
-  startDate: Date;
-  endDate?: Date;
-  recommendations: Recommendation[];
-}
 
-
-
-export interface Recommendation {
-  name: string;
-  frequency: string;
-  establishedOn: Date;
-  frequencyEntries: FrequencyEntry[];
-}
-
-export interface FormRecommendation extends Recommendation {
-  guid: string;
-}
-
-export interface FrequencyEntry {
-  dosage: string;
-  when: string;
-}
 
 export const SAMPLE_RECOMMENDATIONS : FormRecommendation[] = [  
   {

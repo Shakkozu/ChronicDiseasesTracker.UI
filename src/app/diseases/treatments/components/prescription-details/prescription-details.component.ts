@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { FrequencyEntry, Recommendation } from '../treatment-details/treatment-details.component';
-import { DateService } from '../../services/date-service';
+import { FrequencyEntry } from '../../../model/model';
+import { DateService } from '../../../services/date-service';
 
 @Component({
   selector: 'app-prescription-details',

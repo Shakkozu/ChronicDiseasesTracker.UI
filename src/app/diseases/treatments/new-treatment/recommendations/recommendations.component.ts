@@ -2,8 +2,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSelectChange } from '@angular/material/select';
-import { FormRecommendation, FrequencyEntry, Recommendation } from '../../treatment-details/treatment-details.component';
 import { getNewGuid } from '../../../../shared/create-guid-service';
+import { FormRecommendation, FrequencyEntry } from '../../../model/model';
 
 @Component({
   selector: 'app-recommendations',

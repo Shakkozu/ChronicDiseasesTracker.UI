@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { DiseasesListComponent } from './diseases-list/diseases-list.component';
+import { DiseasesListComponent } from './components/diseases-list/diseases-list.component';
 import { MaterialModule } from '../material.module';
-import { DiseaseDetailsNavComponent } from './disease-details-nav/disease-details-nav.component';
-import { TreatmentDetailsComponent } from './treatments/treatment-details/treatment-details.component';
-import { TreatmentsHistoryComponent } from './treatments/treatments-history/treatments-history.component';
-import { PrescriptionDetailsComponent } from './treatments/prescription-details/prescription-details.component';
+import { DiseaseDetailsNavComponent } from './components/disease-details-nav/disease-details-nav.component';
 import { NewTreatmentComponent } from './treatments/new-treatment/new-treatment.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RecommendationsComponent } from './treatments/new-treatment/recommendations/recommendations.component';
 import { SharedModule } from '../shared/shared.module';
+import { PrescriptionDetailsComponent } from './treatments/components/prescription-details/prescription-details.component';
+import { TreatmentDetailsComponent } from './treatments/components/treatment-details/treatment-details.component';
+import { TreatmentsHistoryComponent } from './treatments/components/treatments-history/treatments-history.component';
 
 const routes: Routes = [
   { path: '', component: DiseasesListComponent },

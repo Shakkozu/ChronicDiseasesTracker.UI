@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { TreatmentDetails } from '../treatment-details/treatment-details.component';
-import { DateService } from '../../services/date-service';
+import { TreatmentDetails } from '../../../model/model';
+import { DateService } from '../../../services/date-service';
 
 @Component({
   selector: 'app-treatments-history',

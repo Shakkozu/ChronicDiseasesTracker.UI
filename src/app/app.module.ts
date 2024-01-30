@@ -13,6 +13,7 @@ import { DiseasesModule } from './diseases/diseases.module';
 import { MaterialModule } from './material.module';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { SharedModule } from './shared/shared.module';
+import { NgxsModule } from '@ngxs/store';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { SharedModule } from './shared/shared.module';
     StartComponent,
   ],
   imports: [
+    NgxsModule.forRoot([]),
     MaterialModule,
     BrowserModule,
     HttpClientModule,

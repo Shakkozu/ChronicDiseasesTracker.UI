@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormRecommendation, FrequencyEntry, Recommendation, SAMPLE_RECOMMENDATIONS } from '../treatment-details/treatment-details.component';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { RecommendationsComponent } from './recommendations/recommendations.component';
@@ -8,7 +7,8 @@ import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DATE_FORMAT } from '../../../shared/date-formats';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { ConfirmationDialogComponent, ConfirmationDialogResult } from '../../../shared/confirmation-dialog/confirmation-dialog.component';
-import { Result } from 'postcss';
+import { SAMPLE_RECOMMENDATIONS } from '../components/treatment-details/treatment-details.component';
+import { FormRecommendation } from '../../model/model';
 
 @Component({
   selector: 'app-new-treatment',
@@ -103,19 +103,3 @@ export class NewTreatmentComponent {
   }
 }
 
-export interface NewTreatmentDetails {
-  diseaseGuid: string;
-  treatment: string;
-  startDate: Date;
-  establishedBy: string;
-  establishedOn: Date;
-  additionalInfo: string;
-  medications: Recommendation[];
-}
-
-
-export interface NewTreatmentMedication {
-  name: string;
-  frequency: string;
-  frequencyEntries: FrequencyEntry[];
-}
