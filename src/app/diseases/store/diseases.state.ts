@@ -1,5 +1,3 @@
-import { tap, catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { DiseasesInMemoryService } from '../services/diseases.service';
@@ -19,29 +17,42 @@ export class DiseasesState {
 
 	@Action(Diseases.FetchAll)
 	fetchAllUserDiseases(ctx: StateContext<DiseasesStateModel>) {
-		console.log('entered action fetchAllUserDiseases');
 		ctx.patchState({ loading: true });
 		this.diseaseService.fetchAllDiseases().subscribe(diseases => {
 			ctx.patchState({
 				diseases: diseases,
 				loading: false,
 			});
-			console.log('state after updating')
-			console.log(ctx.getState());
+			console.log(diseases);
 		}, error => {
 			ctx.patchState({
 				loading: false,
-				error: 'Failed to fetch diseases. Please try again later.', // Provide a more descriptive error message
+				error: 'Failed to fetch diseases. Please try again later. Error message: ' + error, // Provide a more descriptive error message
 			});
 		})
 	}
 
 	@Selector()
-	static diseasesList(state: DiseasesStateModel) : Disease[] {
+	static diseasesList(state: DiseasesStateModel): Disease[] {
 		return state.diseases.map(dis => ({
 			name: dis.name,
 			guid: dis.guid,
 			currentTreatmentGuid: dis.currentTreatmentGuid
 		}));
+	}
+
+	@Selector([DiseasesState])
+	static getItemById(state: DiseasesStateModel) {
+		return (guid: string) => {
+			const result = state.diseases.find(disease => disease.guid === guid);
+			if (!result)
+				throw Error("Disease with guid: " + guid + " not found");
+
+			return ({
+				name: result.name,
+				guid: result.guid,
+				currentTreatmentGuid: result.currentTreatmentGuid
+			});
+		};
 	}
 }

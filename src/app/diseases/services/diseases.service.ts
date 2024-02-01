@@ -29,7 +29,6 @@ export class DiseasesRestService implements DiseasesService {
 })
 export class DiseasesInMemoryService implements DiseasesService {
 	fetchAllDiseases(): Observable<DiseaseDetails[]> {
-		console.log('fetching diseases:')
 		return of(this.sampleResult);
 	}
 

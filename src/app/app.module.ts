@@ -15,6 +15,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { SharedModule } from './shared/shared.module';
 import { NgxsModule } from '@ngxs/store';
 import { DiseasesState } from './diseases/store/diseases.state';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,10 @@ import { DiseasesState } from './diseases/store/diseases.state';
     SharedModule,
     DiseasesModule,
   ],
-  providers: [[{ provide: MAT_DATE_LOCALE, useValue: 'pl-PL' }]],
+  providers: [
+    [{ provide: MAT_DATE_LOCALE, useValue: 'pl-PL' }],
+    provideRouter([], withComponentInputBinding()),
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,6 +5,11 @@ export namespace Diseases {
 		static readonly type = '[Diseases] Fetch All';
 		constructor () { }
 	}
+	
+	export class FindByGuid {
+		static readonly type = '[Diseases] Find By Guid';
+		constructor (public guid: string) { }
+	}
 }
 
 export interface DiseasesStateModel {

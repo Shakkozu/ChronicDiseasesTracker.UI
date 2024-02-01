@@ -17,6 +17,5 @@ export class DiseasesListComponent {
 
   navigateToDiseaseDetails(diseaseGuid: string) {
     this.router.navigate(['/diseases', diseaseGuid]);
-    
   }
 }
