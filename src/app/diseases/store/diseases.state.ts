@@ -23,7 +23,6 @@ export class DiseasesState {
 				diseases: diseases,
 				loading: false,
 			});
-			console.log(diseases);
 		}, error => {
 			ctx.patchState({
 				loading: false,
@@ -58,11 +57,11 @@ export class DiseasesState {
 
 	@Selector([DiseasesState])
 	static findDiseaseTreatmentByGuid(state: DiseasesStateModel) {
-		return (diseaseName: string, treatmentGuid: string) => {
+		return (diseaseGuid: string, treatmentGuid: string) => {
 			let result! : TreatmentDetails;
-			const searchedDisease = state.diseases.find(disease => disease.name === diseaseName);
+			const searchedDisease = state.diseases.find(disease => disease.guid === diseaseGuid);
 			if (!searchedDisease)
-				throw Error("Disease with guid: " + diseaseName + " not found");
+				throw Error("Disease with guid: " + diseaseGuid + " not found");
 
 			if (searchedDisease.currentTreatmentGuid === treatmentGuid) {
 				return searchedDisease.currentTreatment;

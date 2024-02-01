@@ -16,9 +16,9 @@ const routes: Routes = [
   { path: '', component: DiseasesListComponent },
   { path: ':guid', component: DiseaseDetailsNavComponent },
   { path: 'treatments/new', component: NewTreatmentComponent },
-  { path: ':diseaseName/treatments', component: TreatmentsHistoryComponent },
-  { path: ':diseaseName/treatments/:treatmentGuid', component: TreatmentDetailsComponent },
-  { path: ':diseaseName/treatments/:treatmentGuid/:name', component: PrescriptionDetailsComponent },
+  { path: ':diseaseGuid/treatments', component: TreatmentsHistoryComponent },
+  { path: ':diseaseGuid/treatments/:treatmentGuid', component: TreatmentDetailsComponent },
+  { path: ':diseaseGuid/treatments/:treatmentGuid/:name', component: PrescriptionDetailsComponent },
 ];
 
 @NgModule({

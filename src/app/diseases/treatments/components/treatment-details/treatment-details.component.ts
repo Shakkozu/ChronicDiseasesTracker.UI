@@ -17,10 +17,10 @@ export class TreatmentDetailsComponent {
   }
 
   constructor (private store: Store, private route: ActivatedRoute) {
-    const diseaseName = this.route.snapshot.paramMap.get('diseaseName') ?? '';
+    const diseaseGuid = this.route.snapshot.paramMap.get('diseaseGuid') ?? '';
     const treatmentGuid = this.route.snapshot.paramMap.get('treatmentGuid') ?? '';
 
-    this.treatment = this.store.selectSnapshot(DiseasesState.findDiseaseTreatmentByGuid)(diseaseName, treatmentGuid);
+    this.treatment = this.store.selectSnapshot(DiseasesState.findDiseaseTreatmentByGuid)(diseaseGuid, treatmentGuid);
   }
 
   return() {

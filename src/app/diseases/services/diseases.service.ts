@@ -60,7 +60,7 @@ export class DiseasesInMemoryService implements DiseasesService {
 		const treatment1: TreatmentDetails = {
 			guid: 'treatment-guid-1',
 			diseaseGuid: 'disease-guid-1',
-			disease: 'Common Cold',
+			disease: 'Flu',
 			treatment: 'Rest and hydration',
 			establishedBy: 'Dr. Smith',
 			establishedOn: new Date('2023-01-10'),
@@ -71,7 +71,7 @@ export class DiseasesInMemoryService implements DiseasesService {
 		const treatment2: TreatmentDetails = {
 			guid: 'treatment-guid-2',
 			diseaseGuid: 'disease-guid-2',
-			disease: 'Flu',
+			disease: 'Common Cold',
 			treatment: 'Antiviral medication',
 			establishedBy: 'Dr. Johnson',
 			establishedOn: new Date('2023-02-05'),
@@ -82,18 +82,18 @@ export class DiseasesInMemoryService implements DiseasesService {
 
 		const diseaseDetails1: DiseaseDetails = {
 			name: 'Flu',
-			guid: 'patient-guid-1',
+			guid: 'disease-guid-1',
 			currentTreatmentGuid: 'treatment-guid-1',
 			currentTreatment: treatment1,
-			historicalTreatments: [treatment1, treatment2],
+			historicalTreatments: [treatment2],
 		};
 
 		const diseaseDetails2: DiseaseDetails = {
 			name: 'Common Cold',
-			guid: 'patient-guid-2',
+			guid: 'disease-guid-2',
 			currentTreatmentGuid: 'treatment-guid-2',
 			currentTreatment: treatment2,
-			historicalTreatments: [treatment2, treatment1],
+			historicalTreatments: [treatment1],
 		};
 
 		return [diseaseDetails1, diseaseDetails2];
