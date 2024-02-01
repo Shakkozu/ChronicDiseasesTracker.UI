@@ -4,7 +4,7 @@
 	</mat-toolbar>
 	<div class="diseases-list mt-4">
 		<mat-list>
-			<div class="list-item-container" *ngFor="let disease of diseases"
+			<div class="list-item-container" *ngFor="let disease of diseases$ | async"
 				(click)="navigateToDiseaseDetails(disease.guid)">
 				<mat-list-item>
 					<mat-icon matListItemIcon style="font-size: 24px;">coronavirus</mat-icon>

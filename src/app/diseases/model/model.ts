@@ -1,3 +1,9 @@
+export interface Disease {
+	name: string;
+	guid: string;
+	currentTreatmentGuid: string;
+}
+
 export interface DiseaseDetails {
 	name: string;
 	guid: string;

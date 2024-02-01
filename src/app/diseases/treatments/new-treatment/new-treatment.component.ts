@@ -39,7 +39,7 @@ export class NewTreatmentComponent {
   }
 
   public isValid(): boolean {
-    return this.treatmentForm.valid && this.recommendations.length > 0;
+    return this.treatmentForm.touched && this.treatmentForm.valid && this.recommendations.length > 0;
   }
 
   public getControl(name: string) {

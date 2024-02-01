@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { Disease } from '../diseases-list/diseases-list.component';
-import { sample } from 'rxjs';
 import { Router } from '@angular/router';
-import { Select, Store } from '@ngxs/store';
+import { Store } from '@ngxs/store';
+import { Disease } from '../../model/model';
 
 @Component({
   selector: 'app-disease-details-nav',

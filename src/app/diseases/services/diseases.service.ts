@@ -29,6 +29,7 @@ export class DiseasesRestService implements DiseasesService {
 })
 export class DiseasesInMemoryService implements DiseasesService {
 	fetchAllDiseases(): Observable<DiseaseDetails[]> {
+		console.log('fetching diseases:')
 		return of(this.sampleResult);
 	}
 
@@ -81,7 +82,7 @@ export class DiseasesInMemoryService implements DiseasesService {
 		};
 
 		const diseaseDetails1: DiseaseDetails = {
-			name: 'Patient A',
+			name: 'Flu',
 			guid: 'patient-guid-1',
 			currentTreatmentGuid: 'treatment-guid-1',
 			currentTreatment: treatment1,
@@ -89,7 +90,7 @@ export class DiseasesInMemoryService implements DiseasesService {
 		};
 
 		const diseaseDetails2: DiseaseDetails = {
-			name: 'Patient B',
+			name: 'Common Cold',
 			guid: 'patient-guid-2',
 			currentTreatmentGuid: 'treatment-guid-2',
 			currentTreatment: treatment2,

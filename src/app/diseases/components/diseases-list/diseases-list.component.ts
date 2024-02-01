@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Disease } from '../../model/model';
+import { Select } from '@ngxs/store';
+import { DiseasesState } from '../../store/diseases.state';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-diseases-list',
@@ -7,12 +11,8 @@ import { Router } from '@angular/router';
   styleUrl: './diseases-list.component.scss'
 })
 export class DiseasesListComponent {
-  public diseases: Disease[] = [];
+  @Select(DiseasesState.diseasesList) diseases$: Observable<Disease[]> | undefined;
   constructor(private router: Router) {
-  }
-  
-  ngOnInit(): void {
-    this.diseases = SAMPLE_DATA;
   }
 
   navigateToDiseaseDetails(diseaseGuid: string) {
@@ -20,17 +20,3 @@ export class DiseasesListComponent {
     
   }
 }
-
-export interface Disease {
-  name: string;
-  guid: string;
-  currentTreatmentGuid: string;
-}
-
-
-const SAMPLE_DATA: Array<Disease> = [
-  { name: 'Diabetes', guid: '00000000-1111-2222-3333-44444444', currentTreatmentGuid: '00000000-1111-2222-3333-44444444' },
-  { name: 'Hypertension', guid: '00000000-1111-2222-3333-44444448', currentTreatmentGuid: '00000000-1111-2222-3333-44444448' },
-  { name: 'Asthma', guid: '00000000-1111-2222-3333-44444446', currentTreatmentGuid: '00000000-1111-2222-3333-44444446' },
-  { name: 'Heart Disease', guid: '00000000-1111-2222-3333-444444445', currentTreatmentGuid: '00000000-1111-2222-3333-444444445' },
-];
