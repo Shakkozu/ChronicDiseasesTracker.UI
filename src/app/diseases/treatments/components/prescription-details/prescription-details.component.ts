@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { FrequencyEntry } from '../../../model/model';
+import { PrescriptionEntry, RecommendationHistoryDetails, Recommendation } from '../../../model/model';
 import { DateService } from '../../../services/date-service';
+import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngxs/store';
+import { DiseasesState } from '../../../store/diseases.state';
 
 @Component({
   selector: 'app-prescription-details',
@@ -8,8 +11,16 @@ import { DateService } from '../../../services/date-service';
   styleUrl: './prescription-details.component.scss'
 })
 export class PrescriptionDetailsComponent {
+  
+  public details: RecommendationHistoryDetails;
+  constructor (private route: ActivatedRoute, private store: Store) {
+    const diseaseGuid = this.route.snapshot.paramMap.get('diseaseGuid') ?? '';
+    const treatmentGuid = this.route.snapshot.paramMap.get('treatmentGuid') ?? '';
+    const recommendationName = this.route.snapshot.paramMap.get('recommendationName') ?? '';
 
-  details: PrescriptionHistoryDetails = SAMPLE_DATA;
+    this.details = this.store.selectSnapshot(DiseasesState.findTreatmentRecommendationHistory)(diseaseGuid, treatmentGuid, recommendationName);
+  }
+
   return() {
     window.history.back();
   }
@@ -25,59 +36,4 @@ export class PrescriptionDetailsComponent {
   public getDurationString(startDate: Date, endDate: Date | undefined) {
     return DateService.getDurationString(startDate, endDate);
   }
-}
-
-export interface PrescriptionHistoryDetails {
-  name: string;
-  treatmentGuid: string;
-  prescriptionEntries: PrescriptionEntry[];
-};
-export interface PrescriptionEntry {
-  startDate: Date;
-  endDate?: Date;
-  frequency: string;
-  frequencyEntries: FrequencyEntry[];
-};
-
-
-export const SAMPLE_DATA: PrescriptionHistoryDetails = {
-  name: 'Insulin',
-  treatmentGuid: '00000000-0000-0000-0000-000000000000',
-  prescriptionEntries: [
-    {
-      startDate: new Date(),
-      frequency: 'Daily',
-      frequencyEntries: [
-        { dosage: '30mg', when: 'Morning' },
-        { dosage: '20mg', when: 'Night' }
-      ]
-    },
-    {
-      startDate: new Date(),
-      endDate: new Date(),
-      frequency: 'Daily',
-      frequencyEntries: [
-        { dosage: '10mg', when: 'Morning' },
-        { dosage: '10mg', when: 'Evening' },
-        { dosage: '20mg', when: 'Night' }
-      ]
-    },
-    {
-      startDate: new Date(),
-      endDate: new Date(),
-      frequency: 'Daily',
-      frequencyEntries: [
-        { dosage: '10mg', when: 'after every meal' },
-      ]
-    },
-    {
-      startDate: new Date(),
-      endDate: new Date(),
-      frequency: 'Daily',
-      frequencyEntries: [
-        { dosage: '90mg', when: 'Night' }
-      ]
-    },
-  ]
-
 }

@@ -36,7 +36,7 @@ export class TreatmentDetailsComponent {
   }
 
   getLinkToRecommendationHistory(recommendation: Recommendation) {
-    return encodeURI(recommendation.name);
+    return recommendation.name;
   }
 }
 

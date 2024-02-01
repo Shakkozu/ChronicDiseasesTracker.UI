@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'treatments/new', component: NewTreatmentComponent },
   { path: ':diseaseGuid/treatments', component: TreatmentsHistoryComponent },
   { path: ':diseaseGuid/treatments/:treatmentGuid', component: TreatmentDetailsComponent },
-  { path: ':diseaseGuid/treatments/:treatmentGuid/:name', component: PrescriptionDetailsComponent },
+  { path: ':diseaseGuid/treatments/:treatmentGuid/:recommendationName', component: PrescriptionDetailsComponent },
 ];
 
 @NgModule({

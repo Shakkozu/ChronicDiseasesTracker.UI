@@ -56,6 +56,7 @@ export const SAMPLE_DATA: TreatmentDetails[] = [
         frequency: 'Daily',
         establishedOn: new Date()
       }
-    ]
+    ],
+    recommendationsHistory: []
   },
 ];

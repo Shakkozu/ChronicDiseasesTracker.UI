@@ -66,6 +66,29 @@ export class DiseasesInMemoryService implements DiseasesService {
 			establishedOn: new Date('2023-01-10'),
 			startDate: new Date('2023-01-11'),
 			recommendations: [recommendation1],
+			recommendationsHistory: [{
+				name: recommendation1.name,
+				prescriptionEntries: [
+					{
+						frequency: 'Daily',
+						frequencyEntries: [
+							{ dosage: '10mg', when: 'After Breakfast' },
+							{ dosage: '20mg', when: 'After Supper' }
+						],
+						startDate: new Date()
+					},
+					{
+						frequency: 'Daily',
+						frequencyEntries: [
+							{ dosage: '10mg', when: 'After Breakfast' },
+							{ dosage: '30mg', when: 'After Dinner' },
+							{ dosage: '10mg', when: 'After Supper' }
+						],
+						startDate: new Date(),
+						endDate: new Date()
+					}
+				]
+			}]
 		};
 
 		const treatment2: TreatmentDetails = {
@@ -78,6 +101,19 @@ export class DiseasesInMemoryService implements DiseasesService {
 			startDate: new Date('2023-02-06'),
 			endDate: new Date('2023-02-15'),
 			recommendations: [recommendation2],
+			recommendationsHistory: [{
+				name: recommendation2.name,
+				prescriptionEntries: [
+					{
+						frequency: 'Daily',
+						frequencyEntries: [
+							{dosage: '10mg', when:'After Breakfast'},
+							{dosage: '20mg', when:'After Supper'}
+						],
+						startDate: new Date()
+					}
+				]
+			}]
 		};
 
 		const diseaseDetails1: DiseaseDetails = {
