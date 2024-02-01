@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { DateService } from '../../../services/date-service';
 import { TreatmentDetails, Recommendation, FormRecommendation } from '../../../model/model';
+import { Store } from '@ngxs/store';
+import { DiseasesState } from '../../../store/diseases.state';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-treatment-details',
@@ -8,11 +11,16 @@ import { TreatmentDetails, Recommendation, FormRecommendation } from '../../../m
   styleUrl: './treatment-details.component.scss'
 })
 export class TreatmentDetailsComponent {
-
-  public treatment: TreatmentDetails = SAMPLE_DATA;
+  public treatment: TreatmentDetails;
   public get getDiseaseGuid(): string {
     return this.treatment.diseaseGuid;
+  }
 
+  constructor (private store: Store, private route: ActivatedRoute) {
+    const diseaseName = this.route.snapshot.paramMap.get('diseaseName') ?? '';
+    const treatmentGuid = this.route.snapshot.paramMap.get('treatmentGuid') ?? '';
+
+    this.treatment = this.store.selectSnapshot(DiseasesState.findDiseaseTreatmentByGuid)(diseaseName, treatmentGuid);
   }
 
   return() {
@@ -30,32 +38,7 @@ export class TreatmentDetailsComponent {
   getLinkToRecommendationHistory(recommendation: Recommendation) {
     return encodeURI(recommendation.name);
   }
-
 }
-
-export const SAMPLE_DATA: TreatmentDetails = {
-  disease: 'Diabetes',
-  diseaseGuid: '00000000-0000-0000-0000-000000000000',
-  guid: '00000000-0000-0000-0000-000000000000',
-  treatment: 'Insulin',
-  establishedBy: 'Dr. John Doe',
-  establishedOn: new Date(),
-  startDate: new Date(),
-  recommendations: [
-    {
-      name: 'Insulin',
-      frequencyEntries: [{ dosage: '10mg', when: 'Morning' }],
-      frequency: 'Daily',
-      establishedOn: new Date(),
-    },
-    {
-      name: 'Met formin',
-      frequencyEntries: [{ dosage: '10mg', when: 'Monday trough saturday' }, { dosage: '20mg', when: 'sunday' }],
-      frequency: 'Weekly',
-      establishedOn: new Date(),
-    }
-  ]
-};
 
 
 

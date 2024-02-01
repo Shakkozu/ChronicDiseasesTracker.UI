@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { DiseasesInMemoryService } from '../services/diseases.service';
 import { DiseasesStateModel, Diseases } from './disease.actions';
-import { Disease } from '../model/model';
+import { Disease, TreatmentDetails } from '../model/model';
 
 @State<DiseasesStateModel>({
 	name: 'diseases',
@@ -53,6 +53,25 @@ export class DiseasesState {
 				guid: result.guid,
 				currentTreatmentGuid: result.currentTreatmentGuid
 			});
+		};
+	}
+
+	@Selector([DiseasesState])
+	static findDiseaseTreatmentByGuid(state: DiseasesStateModel) {
+		return (diseaseName: string, treatmentGuid: string) => {
+			let result! : TreatmentDetails;
+			const searchedDisease = state.diseases.find(disease => disease.name === diseaseName);
+			if (!searchedDisease)
+				throw Error("Disease with guid: " + diseaseName + " not found");
+
+			if (searchedDisease.currentTreatmentGuid === treatmentGuid) {
+				return searchedDisease.currentTreatment;
+			}
+
+			const historicalTreatment = searchedDisease.historicalTreatments.find(tr => tr.guid === treatmentGuid);
+			if (!historicalTreatment)
+				throw Error(`Treatment with guid ${ treatmentGuid } not found`);
+			return historicalTreatment;
 		};
 	}
 }
