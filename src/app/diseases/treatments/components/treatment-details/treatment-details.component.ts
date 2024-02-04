@@ -39,26 +39,3 @@ export class TreatmentDetailsComponent {
     return recommendation.name;
   }
 }
-
-
-
-export const SAMPLE_RECOMMENDATIONS : FormRecommendation[] = [  
-  {
-    name: 'Medication A',
-    frequency: 'Daily',
-    establishedOn: new Date(),
-    guid: '00000000-0000-0000-0000-000000000002',
-    frequencyEntries: [{ dosage: '10mg', when: 'Morning' }]
-  },
-  {
-    name: 'Medication B',
-    frequency: 'Weekly',
-    establishedOn: new Date(),
-    guid: '00000000-0000-0000-0000-000000000003',
-    frequencyEntries: [
-      { dosage: '20mg', when: 'Monday-Saturday' },
-      { dosage: '30mg', when: 'Wednesday' },
-      { dosage: '40mg', when: 'Friday' }
-    ]
-  }
-];

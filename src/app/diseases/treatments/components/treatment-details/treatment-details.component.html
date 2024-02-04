@@ -9,7 +9,7 @@
 			<mat-icon>more_vert</mat-icon>
 		</button>
 		<mat-menu #menu="matMenu">
-			<button mat-menu-item [routerLink]="['/diseases/treatments/new']">
+			<button mat-menu-item [routerLink]="['/diseases', getDiseaseGuid, 'treatments', 'new']">
 				<span>Establish new treatment</span>
 			</button>
 			<button mat-menu-item [routerLink]="['/diseases', getDiseaseGuid, 'treatments']">

@@ -8,7 +8,6 @@ export interface DiseaseDetails {
 	name: string;
 	guid: string;
 	currentTreatmentGuid: string;
-	// currentTreatment: TreatmentDetails;
 	treatments: TreatmentDetails[];
 }
 
@@ -54,13 +53,12 @@ export interface FrequencyEntry {
 
 
 
-export interface NewTreatmentDetails {
+export interface EstablishNewTreatmentCommand {
 	diseaseGuid: string;
 	treatment: string;
 	startDate: Date;
 	establishedBy: string;
 	establishedOn: Date;
-	additionalInfo: string;
 	medications: Recommendation[];
 }
 

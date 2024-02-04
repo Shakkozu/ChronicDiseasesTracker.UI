@@ -1,9 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSelectChange } from '@angular/material/select';
 import { getNewGuid } from '../../../../shared/create-guid-service';
 import { FormRecommendation, FrequencyEntry } from '../../../model/model';
+import { ConfirmationDialogComponent, ConfirmationDialogResult } from '../../../../shared/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-recommendations',
@@ -21,6 +22,7 @@ export class RecommendationsComponent implements OnInit {
 
   constructor (private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<RecommendationsComponent>,
+    private dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: FormRecommendation) {
   }
 
@@ -54,8 +56,18 @@ export class RecommendationsComponent implements OnInit {
     this.dialogRef.close(result);
   }
 
-  public return() {
-    this,this.dialogRef.close();
+  public exit() {
+    if (this.form.touched && this.frequencyEntries.getRawValue().length > 0) {
+      this.dialog.open<ConfirmationDialogComponent, any, ConfirmationDialogResult>(ConfirmationDialogComponent)
+      .afterClosed()
+      .subscribe((result: ConfirmationDialogResult | undefined) => {
+        if (result && result.Confirmed) {
+          this.dialogRef.close();
+        }
+      });
+    } else {
+      this.dialogRef.close();
+    }
   }
 
   public addNewDosageButtonClicked(): void {
@@ -178,6 +190,7 @@ interface FrequencyOptionForm {
 }
 
 export enum FrequencyOptions {
+  NotDefined = '-',
   Daily = 'Daily',
   Weekly = 'Weekly',
   Custom = 'Custom',

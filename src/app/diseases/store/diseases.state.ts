@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { DiseasesInMemoryService } from '../services/diseases.service';
 import { DiseasesStateModel, Diseases } from './disease.actions';
-import { Disease, TreatmentDetails } from '../model/model';
+import { Disease, EstablishNewTreatmentCommand, TreatmentDetails } from '../model/model';
 
 @State<DiseasesStateModel>({
 	name: 'diseases',
@@ -29,6 +29,11 @@ export class DiseasesState {
 				error: 'Failed to fetch diseases. Please try again later. Error message: ' + error, // Provide a more descriptive error message
 			});
 		})
+	}
+
+	@Action(Diseases.EstablishNewTreatment)
+	establishNewTreatment(ctx: StateContext<DiseasesStateModel>, action: EstablishNewTreatmentCommand) {
+		console.log(action)
 	}
 
 	@Selector()

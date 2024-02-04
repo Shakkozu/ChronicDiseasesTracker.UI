@@ -15,7 +15,7 @@ import { TreatmentsHistoryComponent } from './treatments/components/treatments-h
 const routes: Routes = [
   { path: '', component: DiseasesListComponent },
   { path: ':guid', component: DiseaseDetailsNavComponent },
-  { path: 'treatments/new', component: NewTreatmentComponent },
+  { path: ':diseaseGuid/treatments/new', component: NewTreatmentComponent },
   { path: ':diseaseGuid/treatments', component: TreatmentsHistoryComponent },
   { path: ':diseaseGuid/treatments/:treatmentGuid', component: TreatmentDetailsComponent },
   { path: ':diseaseGuid/treatments/:treatmentGuid/:recommendationName', component: PrescriptionDetailsComponent },

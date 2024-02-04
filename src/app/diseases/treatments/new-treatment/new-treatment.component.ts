@@ -7,8 +7,10 @@ import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DATE_FORMAT } from '../../../shared/date-formats';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { ConfirmationDialogComponent, ConfirmationDialogResult } from '../../../shared/confirmation-dialog/confirmation-dialog.component';
-import { SAMPLE_RECOMMENDATIONS } from '../components/treatment-details/treatment-details.component';
-import { FormRecommendation } from '../../model/model';
+import { EstablishNewTreatmentCommand, FormRecommendation } from '../../model/model';
+import { Store } from '@ngxs/store';
+import { Diseases } from '../../store/disease.actions';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-new-treatment',
@@ -22,19 +24,21 @@ import { FormRecommendation } from '../../model/model';
 })
 export class NewTreatmentComponent {
   public treatmentForm: FormGroup;
-  public recommendations: FormRecommendation[] = SAMPLE_RECOMMENDATIONS;
+  public recommendations: FormRecommendation[] = [];
   firstFormGroup: FormGroup = this.formBuilder.group({ firstCtrl: [''] });
   secondFormGroup: FormGroup = this.formBuilder.group({ secondCtrl: [''] });
   diseaseGuid: string = '';
 
   constructor (private dialog: MatDialog,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private store: Store) {
+    this.diseaseGuid = this.route.snapshot.paramMap.get('diseaseGuid') ?? '';
     this.treatmentForm = this.formBuilder.group({
       treatment: '',
       startDate: new Date(),
       establishedBy: '',
       establishedOn: new Date(),
-      additionalInfo: '',
     });
   }
 
@@ -61,18 +65,39 @@ export class NewTreatmentComponent {
           window.history.back();
         }
       });
-
   }
 
   save() {
-    throw new Error('Method not implemented.');
+    if (!this.isValid())
+      return;
+
+    let command: EstablishNewTreatmentCommand = {
+      diseaseGuid: this.diseaseGuid,
+      establishedBy: this.getValueFromFormControl('establishedBy'),
+      establishedOn: this.getValueFromFormControl('establishedOn'),
+      medications: this.recommendations,
+      startDate: this.getValueFromFormControl('startDate'),
+      treatment: this.getValueFromFormControl('treatment')
+    };
+
+    this.store.dispatch(new Diseases.EstablishNewTreatment(command))
+      .subscribe(_ => {
+        
+        });
   }
+
+  private getValueFromFormControl(formControlName: string) {
+    return this.treatmentForm.controls[formControlName].value;
+  }
+
 
   addNewRecommendation() {
     const dialogRef = this.dialog.open(RecommendationsComponent, {
       width: '500px',
       height: '700px',
-      data: {}
+      disableClose: true,
+      data: {
+      }
     });
     dialogRef.afterClosed().subscribe(result => {
       if (!result)
