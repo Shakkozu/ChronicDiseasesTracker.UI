@@ -8,8 +8,8 @@ export interface DiseaseDetails {
 	name: string;
 	guid: string;
 	currentTreatmentGuid: string;
-	currentTreatment: TreatmentDetails;
-	historicalTreatments: TreatmentDetails[];
+	// currentTreatment: TreatmentDetails;
+	treatments: TreatmentDetails[];
 }
 
 export interface TreatmentDetails {

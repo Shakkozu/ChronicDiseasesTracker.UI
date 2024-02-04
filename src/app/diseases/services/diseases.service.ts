@@ -120,16 +120,14 @@ export class DiseasesInMemoryService implements DiseasesService {
 			name: 'Flu',
 			guid: 'disease-guid-1',
 			currentTreatmentGuid: 'treatment-guid-1',
-			currentTreatment: treatment1,
-			historicalTreatments: [treatment2],
+			treatments: [treatment1, treatment2],
 		};
 
 		const diseaseDetails2: DiseaseDetails = {
 			name: 'Common Cold',
 			guid: 'disease-guid-2',
 			currentTreatmentGuid: 'treatment-guid-2',
-			currentTreatment: treatment2,
-			historicalTreatments: [treatment1],
+			treatments: [treatment2, treatment1],
 		};
 
 		return [diseaseDetails1, diseaseDetails2];

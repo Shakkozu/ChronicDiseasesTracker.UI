@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { TreatmentDetails } from '../../../model/model';
 import { DateService } from '../../../services/date-service';
+import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngxs/store';
+import { DiseasesState } from '../../../store/diseases.state';
 
 @Component({
   selector: 'app-treatments-history',
@@ -8,9 +11,13 @@ import { DateService } from '../../../services/date-service';
   styleUrl: './treatments-history.component.scss'
 })
 export class TreatmentsHistoryComponent {
-  public treatments: TreatmentDetails[] = SAMPLE_DATA;
+  public treatments: TreatmentDetails[] = [];
 
-  constructor () { }
+  constructor (private store: Store, private route: ActivatedRoute) { 
+    const diseaseGuid = this.route.snapshot.paramMap.get('diseaseGuid') ?? '';
+
+    this.treatments = this.store.selectSnapshot(DiseasesState.findAllDiseaseTreatments)(diseaseGuid);
+  }
 
   public get getDiseaseName(): string {
     return this.treatments[0]?.disease ?? '';
@@ -32,31 +39,3 @@ export class TreatmentsHistoryComponent {
     return DateService.getDurationString(treatment.startDate, treatment.endDate);
   }
 }
-
-
-export const SAMPLE_DATA: TreatmentDetails[] = [
-  {
-    disease: 'Asthma',
-    diseaseGuid: '00000000-0000-0000-0000-000000000000',
-    guid: '00000000-0000-0000-0000-000000000000',
-    treatment: 'Inhaled corticosteroids',
-    establishedBy: 'Dr. Robert Johnson',
-    establishedOn: new Date(),
-    startDate: new Date(),
-    recommendations: [
-      {
-        name: 'Fluticasone',
-        frequencyEntries: [{ dosage: '100mcg', when: 'Morning' }, { dosage: '100mcg', when: 'Evening' }],
-        frequency: 'Twice daily',
-        establishedOn: new Date()
-      },
-      {
-        name: 'Budesonide',
-        frequencyEntries: [{ dosage: '200mcg', when: 'Morning' }],
-        frequency: 'Daily',
-        establishedOn: new Date()
-      }
-    ],
-    recommendationsHistory: []
-  },
-];
