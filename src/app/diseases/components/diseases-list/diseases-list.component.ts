@@ -4,6 +4,7 @@ import { Disease } from '../../model/model';
 import { Select } from '@ngxs/store';
 import { DiseasesState } from '../../store/diseases.state';
 import { Observable, of } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-diseases-list',

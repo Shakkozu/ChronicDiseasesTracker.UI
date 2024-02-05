@@ -11,6 +11,11 @@ export namespace Diseases {
 		constructor (public guid: string) { }
 	}
 	
+	export class CreateNewDisease {
+		static readonly type = '[Diseases] Create New Disease';
+		constructor (public diseaseName: string) { }
+	}
+	
 	export class EstablishNewTreatment {
 		static readonly type = '[Diseases] Establish New Treatment';
 		constructor (public newDiseaseCommand: EstablishNewTreatmentCommand) { }

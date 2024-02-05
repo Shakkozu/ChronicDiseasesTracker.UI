@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { State, Action, StateContext, Selector } from '@ngxs/store';
-import { DiseasesInMemoryService } from '../services/diseases.service';
+import { State, Action, StateContext, Selector, Store } from '@ngxs/store';
+import { DiseasesInMemoryService, DiseasesRestService } from '../services/diseases.service';
 import { DiseasesStateModel, Diseases } from './disease.actions';
 import { Disease, EstablishNewTreatmentCommand, TreatmentDetails } from '../model/model';
 
@@ -13,7 +13,7 @@ import { Disease, EstablishNewTreatmentCommand, TreatmentDetails } from '../mode
 })
 @Injectable()
 export class DiseasesState {
-	constructor (private diseaseService: DiseasesInMemoryService) { }
+	constructor (private diseaseService: DiseasesRestService) { }
 
 	@Action(Diseases.FetchAll)
 	fetchAllUserDiseases(ctx: StateContext<DiseasesStateModel>) {
@@ -31,6 +31,14 @@ export class DiseasesState {
 		})
 	}
 
+	@Action(Diseases.CreateNewDisease)
+	createNewDisease(ctx: StateContext<DiseasesStateModel>, action: Diseases.CreateNewDisease) {
+		console.log(action);
+		this.diseaseService.createNewDisease(action.diseaseName)
+			.subscribe(_ => ctx.dispatch(new Diseases.FetchAll()));
+	}
+	
+	
 	@Action(Diseases.EstablishNewTreatment)
 	establishNewTreatment(ctx: StateContext<DiseasesStateModel>, action: EstablishNewTreatmentCommand) {
 		console.log(action)

@@ -74,10 +74,10 @@ export class NewTreatmentComponent {
     let command: EstablishNewTreatmentCommand = {
       diseaseGuid: this.diseaseGuid,
       establishedBy: this.getValueFromFormControl('establishedBy'),
-      establishedOn: this.getValueFromFormControl('establishedOn'),
-      medications: this.recommendations,
+      establishedAt: this.getValueFromFormControl('establishedOn'),
+      recommendations: this.recommendations,
       startDate: this.getValueFromFormControl('startDate'),
-      treatment: this.getValueFromFormControl('treatment')
+      name: this.getValueFromFormControl('treatment')
     };
 
     this.store.dispatch(new Diseases.EstablishNewTreatment(command))

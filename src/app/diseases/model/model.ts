@@ -54,12 +54,12 @@ export interface FrequencyEntry {
 
 
 export interface EstablishNewTreatmentCommand {
-	diseaseGuid: string;
-	treatment: string;
-	startDate: Date;
+	name: string;
 	establishedBy: string;
-	establishedOn: Date;
-	medications: Recommendation[];
+	diseaseGuid: string;
+	startDate: Date;
+	establishedAt: Date;
+	recommendations: Recommendation[];
 }
 
 

@@ -11,9 +11,11 @@ import { SharedModule } from '../shared/shared.module';
 import { PrescriptionDetailsComponent } from './treatments/components/prescription-details/prescription-details.component';
 import { TreatmentDetailsComponent } from './treatments/components/treatment-details/treatment-details.component';
 import { TreatmentsHistoryComponent } from './treatments/components/treatments-history/treatments-history.component';
+import { NewDiseaseComponent } from './components/new-disease/new-disease.component';
 
 const routes: Routes = [
   { path: '', component: DiseasesListComponent },
+  { path: 'new', component: NewDiseaseComponent },
   { path: ':guid', component: DiseaseDetailsNavComponent },
   { path: ':diseaseGuid/treatments/new', component: NewTreatmentComponent },
   { path: ':diseaseGuid/treatments', component: TreatmentsHistoryComponent },
@@ -30,6 +32,7 @@ const routes: Routes = [
     PrescriptionDetailsComponent,
     NewTreatmentComponent,
     RecommendationsComponent,
+    NewDiseaseComponent,
 
   ],
   imports: [

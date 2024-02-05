@@ -1,27 +1,58 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Observable, of } from "rxjs";
+import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
+import { Observable, catchError, of, throwError } from "rxjs";
 import { Store } from "@ngxs/store";
 import { DiseaseDetails, Recommendation, TreatmentDetails } from "../model/model";
+import { environment } from '../../../environments/environment'
 
 
 export interface DiseasesService {
 	fetchAllDiseases(): Observable<DiseaseDetails[]>;
 }
 
+export interface CreateDiseaseRequest {
+	diseaseName: string;
+}
+
 @Injectable({
 	providedIn: 'root',
 })
 export class DiseasesRestService implements DiseasesService {
-	private apiUrl = 'your_backend_api_url'; // Replace with your actual backend API URL
+	constructor (private http: HttpClient) { }
 
-	constructor (private http: HttpClient, private store: Store) { }
-
-	fetchAllDiseases(): Observable<DiseaseDetails[]> {
-		throw new Error('Not implemented');
+	createNewDisease(name: string): Observable<any> {
+		const url = `${ environment.apiUrl }/diseases`;
+		const body = {
+			diseaseName: name
+		};
+		const headers = new HttpHeaders({
+			'Content-Type': 'application/json',
+		});
+		return this.http.post(url, body, { headers }).pipe(
+			catchError(this.handleError)
+		);
 	}
 
-	// Add other methods for CRUD operations if needed
+	private handleError(error: HttpErrorResponse) {
+		if (error.status === 0) {
+			// A client-side or network error occurred. Handle it accordingly.
+			console.error('An error occurred:', error.error);
+		} else {
+			// The backend returned an unsuccessful response code.
+			// The response body may contain clues as to what went wrong.
+			console.error(
+				`Backend returned code ${ error.status }, body was: `, error.error);
+		}
+		// Return an observable with a user-facing error message.
+		return throwError(() => new Error('Something bad happened; please try again later.'));
+	}
+
+
+
+	fetchAllDiseases(): Observable<DiseaseDetails[]> {
+		const url = `${ environment.apiUrl }/diseases`;
+		return this.http.get<DiseaseDetails[]>(url);
+	}
 }
 
 @Injectable({
@@ -107,8 +138,8 @@ export class DiseasesInMemoryService implements DiseasesService {
 					{
 						frequency: 'Daily',
 						frequencyEntries: [
-							{dosage: '10mg', when:'After Breakfast'},
-							{dosage: '20mg', when:'After Supper'}
+							{ dosage: '10mg', when: 'After Breakfast' },
+							{ dosage: '20mg', when: 'After Supper' }
 						],
 						startDate: new Date()
 					}

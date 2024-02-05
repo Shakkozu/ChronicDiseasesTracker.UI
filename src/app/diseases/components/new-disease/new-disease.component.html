@@ -1,0 +1,23 @@
+<div class="container mt-4">
+	<mat-toolbar class="pt-1" color="primary">
+		<button mat-icon-button class="mt-1" aria-label="Return button" (click)="return()">
+			<mat-icon>arrow_back</mat-icon>
+		</button>
+		<span class="text-title-large">New Treatment</span>
+		<span class="flex-1"></span>
+		<button mat-icon-button class="mt-1" aria-label="Return button" [disabled]="!isValid()" (click)="save()">
+			<mat-icon>save</mat-icon>
+		</button>
+	</mat-toolbar>
+
+	<div class="diseases-list mt-4 mx-4">
+		<form [formGroup]="diseaseForm" class="mt-4">
+			<ng-template matStepLabel>Fill basic information</ng-template>
+			<mat-form-field floatLabel="always" appearance="fill" class="w-72">
+				<mat-label>Name</mat-label>
+				<input matNativeControl formControlName="name">
+				<app-error-message [control]="getControl('name')"></app-error-message>
+			</mat-form-field>
+		</form>
+	</div>
+</div>

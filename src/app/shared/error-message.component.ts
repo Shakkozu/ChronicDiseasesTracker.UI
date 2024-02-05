@@ -26,7 +26,11 @@ export class ErrorMessageComponent {
 			return 'Please enter a valid email address';
 		}
 
-		// Add more conditions for other error types as needed
+		if (this.control.hasError('minlength')) {
+			const minLength = this.control?.errors?.['minlength'].requiredLength;
+			const actualLength = this.control?.errors?.['minlength'].actualLength;
+			return `Minimum form control length is ${minLength}. You need ${minLength - actualLength} more`;
+		}
 
 		return '';
 	}
