@@ -33,15 +33,15 @@ export class DiseasesState {
 
 	@Action(Diseases.CreateNewDisease)
 	createNewDisease(ctx: StateContext<DiseasesStateModel>, action: Diseases.CreateNewDisease) {
-		console.log(action);
 		this.diseaseService.createNewDisease(action.diseaseName)
 			.subscribe(_ => ctx.dispatch(new Diseases.FetchAll()));
 	}
 	
 	
 	@Action(Diseases.EstablishNewTreatment)
-	establishNewTreatment(ctx: StateContext<DiseasesStateModel>, action: EstablishNewTreatmentCommand) {
-		console.log(action)
+	establishNewTreatment(ctx: StateContext<DiseasesStateModel>, action: Diseases.EstablishNewTreatment) {
+		this.diseaseService.createNewTreatment(action.newDiseaseCommand)
+			.subscribe(_ => ctx.dispatch(new Diseases.FetchAll()));
 	}
 
 	@Selector()

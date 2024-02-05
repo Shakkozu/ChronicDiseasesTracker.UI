@@ -56,11 +56,30 @@ export interface FrequencyEntry {
 export interface EstablishNewTreatmentCommand {
 	name: string;
 	establishedBy: string;
+	establishedAt: Date;
 	diseaseGuid: string;
 	startDate: Date;
-	establishedAt: Date;
 	recommendations: Recommendation[];
 }
+
+export interface EstablishNewTreatmentRequest {
+	name: string;
+	establishedBy: string;
+	establishedAt: Date;
+	startDate: Date;
+	prescribedRecommendations: RecommendationDto[]
+}
+
+export interface RecommendationDto {
+	name: string;
+	dosage: DosageEntryDto;
+}
+export interface DosageEntryDto {
+	frequency: string;
+	validFrom: Date;
+	frequencyEntries: FrequencyEntry[]
+}
+
 
 
 export interface NewTreatmentMedication {

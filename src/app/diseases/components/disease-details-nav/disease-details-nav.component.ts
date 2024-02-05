@@ -32,7 +32,8 @@ export class DiseaseDetailsNavComponent {
 
   navigateToDetails(item: any) {
     if (item !== 'Treatment') return;
-    const route = '/diseases/' + this.disease.guid + '/treatments/' + this.disease.currentTreatmentGuid;
+    const treatmentGuid = this.disease.currentTreatmentGuid ?? 'new';
+    const route = '/diseases/' + this.disease.guid + '/treatments/' + treatmentGuid;
     this.router.navigate([route]);
   }
 }

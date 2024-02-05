@@ -15,13 +15,19 @@ export class TreatmentDetailsComponent {
   public get getDiseaseGuid(): string {
     return this.treatment.diseaseGuid;
   }
+  public get treatmentDefined(): boolean {
+    return this.treatment !== undefined;
+  }
 
   constructor (private store: Store, private route: ActivatedRoute) {
     const diseaseGuid = this.route.snapshot.paramMap.get('diseaseGuid') ?? '';
     const treatmentGuid = this.route.snapshot.paramMap.get('treatmentGuid') ?? '';
 
+    console.log(diseaseGuid);
+    console.log(treatmentGuid);
     this.treatment = this.store.selectSnapshot(DiseasesState.findDiseaseTreatmentByGuid)(diseaseGuid, treatmentGuid);
   }
+
 
   return() {
     window.history.back();
