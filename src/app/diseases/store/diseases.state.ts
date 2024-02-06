@@ -105,7 +105,7 @@ export class DiseasesState {
 			if (!treatment)
 				throw Error(`Treatment with guid ${ treatmentGuid } not found`);
 
-			const result = treatment.recommendationsHistory.find(rec => rec.name === recommendation);
+			const result = treatment.recommendations.find(rec => rec.name === recommendation);
 			if (!result)
 				throw Error(`Recommendation history with name ${ recommendation } not found within disease ${ diseaseGuid } and treatment ${ treatmentGuid }`);
 			return result;

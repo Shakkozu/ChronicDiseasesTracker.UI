@@ -20,13 +20,12 @@ export interface TreatmentDetails {
 	establishedOn: Date;
 	startDate: Date;
 	endDate?: Date;
-	recommendations: Recommendation[];
-	recommendationsHistory: RecommendationHistoryDetails[];
+	recommendations: RecommendationHistoryDetails[];
 }
 
 export interface RecommendationHistoryDetails {
 	name: string;
-	prescriptionEntries: PrescriptionEntry[];
+	entries: PrescriptionEntry[];
 };
 export interface PrescriptionEntry {
 	startDate: Date;

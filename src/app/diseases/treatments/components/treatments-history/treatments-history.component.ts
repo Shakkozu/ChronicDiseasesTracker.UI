@@ -12,11 +12,12 @@ import { DiseasesState } from '../../../store/diseases.state';
 })
 export class TreatmentsHistoryComponent {
   public treatments: TreatmentDetails[] = [];
+  public diseaseGuid: string;
 
   constructor (private store: Store, private route: ActivatedRoute) { 
-    const diseaseGuid = this.route.snapshot.paramMap.get('diseaseGuid') ?? '';
+    this.diseaseGuid = this.route.snapshot.paramMap.get('diseaseGuid') ?? '';
 
-    this.treatments = this.store.selectSnapshot(DiseasesState.findAllDiseaseTreatments)(diseaseGuid);
+    this.treatments = this.store.selectSnapshot(DiseasesState.findAllDiseaseTreatments)(this.diseaseGuid);
   }
 
   public get getDiseaseName(): string {

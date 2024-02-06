@@ -12,20 +12,22 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TreatmentDetailsComponent {
   public treatment: TreatmentDetails;
+  public diseaseGuid: string;
   public get getDiseaseGuid(): string {
     return this.treatment.diseaseGuid;
   }
   public get treatmentDefined(): boolean {
     return this.treatment !== undefined;
   }
+  public get isCurrentTreatment(): boolean {
+    return this.treatment.endDate === undefined || this.treatment.endDate === null;
+  }
 
   constructor (private store: Store, private route: ActivatedRoute) {
-    const diseaseGuid = this.route.snapshot.paramMap.get('diseaseGuid') ?? '';
+    this.diseaseGuid = this.route.snapshot.paramMap.get('diseaseGuid') ?? '';
     const treatmentGuid = this.route.snapshot.paramMap.get('treatmentGuid') ?? '';
 
-    console.log(diseaseGuid);
-    console.log(treatmentGuid);
-    this.treatment = this.store.selectSnapshot(DiseasesState.findDiseaseTreatmentByGuid)(diseaseGuid, treatmentGuid);
+    this.treatment = this.store.selectSnapshot(DiseasesState.findDiseaseTreatmentByGuid)(this.diseaseGuid, treatmentGuid);
   }
 
 
@@ -34,7 +36,7 @@ export class TreatmentDetailsComponent {
   }
 
   getDateString() {
-    DateService.getDurationString(this.treatment.startDate, this.treatment.endDate);
+    return DateService.getDurationString(this.treatment.startDate, this.treatment.endDate);
   }
 
   getInitials(establishedBy: string) {

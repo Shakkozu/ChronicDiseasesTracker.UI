@@ -120,10 +120,9 @@ export class DiseasesInMemoryService implements DiseasesService {
 			establishedBy: 'Dr. Smith',
 			establishedOn: new Date('2023-01-10'),
 			startDate: new Date('2023-01-11'),
-			recommendations: [recommendation1],
-			recommendationsHistory: [{
+			recommendations: [{
 				name: recommendation1.name,
-				prescriptionEntries: [
+				entries: [
 					{
 						frequency: 'Daily',
 						frequencyEntries: [
@@ -155,10 +154,9 @@ export class DiseasesInMemoryService implements DiseasesService {
 			establishedOn: new Date('2023-02-05'),
 			startDate: new Date('2023-02-06'),
 			endDate: new Date('2023-02-15'),
-			recommendations: [recommendation2],
-			recommendationsHistory: [{
+			recommendations: [{
 				name: recommendation2.name,
-				prescriptionEntries: [
+				entries: [
 					{
 						frequency: 'Daily',
 						frequencyEntries: [

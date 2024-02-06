@@ -26,7 +26,7 @@ export class PrescriptionDetailsComponent {
   }
 
   public getOrderedPrescriptionEntries(): PrescriptionEntry[] {
-    return this.details.prescriptionEntries.sort((a, b) => {
+    return this.details.entries.sort((a, b) => {
       const aEndDate = a.endDate ? a.endDate.getTime() : 0;
       const bEndDate = b.endDate ? b.endDate.getTime() : 0;
       return aEndDate - bEndDate;

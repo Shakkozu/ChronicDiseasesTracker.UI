@@ -3,17 +3,17 @@
 		<button mat-icon-button class="mt-1" aria-label="Return button" (click)="return()">
 			<mat-icon>arrow_back</mat-icon>
 		</button>
-		<span class="text-title-large">{{treatment.disease}} Treatment</span>
+		<span class="text-title-large">{{isCurrentTreatment ? 'Current' : 'Historical'}} Treatment</span>
 		<span class="flex-1"></span>
 		<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
 			<mat-icon>more_vert</mat-icon>
 		</button>
 		<mat-menu #menu="matMenu">
-			<button mat-menu-item [routerLink]="['/diseases', getDiseaseGuid, 'treatments', 'new']">
+			<button mat-menu-item [routerLink]="['/diseases', diseaseGuid, 'treatments', 'new']">
 				<span>Establish new treatment</span>
 			</button>
-			<button mat-menu-item [routerLink]="['/diseases', getDiseaseGuid, 'treatments']">
-				<span>Show historical treatments</span>
+			<button mat-menu-item [routerLink]="['/diseases', diseaseGuid, 'treatments']">
+				<span>All treatments</span>
 			</button>
 		</mat-menu>
 	</mat-toolbar>
@@ -45,14 +45,14 @@
 					*ngFor="let recommendation of treatment.recommendations; let i = index">
 					<mat-list-item class="my-4">
 						<div matListItemTitle>{{recommendation.name}}</div>
-						<div matListItemLine><span>{{recommendation.frequency}}</span></div>
-						<div matListItemLine *ngFor="let frequencyEntry of recommendation.frequencyEntries">
+						<div matListItemLine><span>{{recommendation.entries[0].frequency}}</span></div>
+						<div matListItemLine *ngFor="let frequencyEntry of recommendation.entries[0].frequencyEntries">
 							{{frequencyEntry.when}} - {{frequencyEntry.dosage}}
 						</div>
 						<div matListItemMeta>
-							{{recommendation.establishedOn | date}}
+							{{recommendation.entries[0].startDate| date}}
 							<button mat-icon-button color="primary"
-								[routerLink]="[getLinkToRecommendationHistory(recommendation)]">
+								[routerLink]="[recommendation.name]">
 								<mat-icon>history</mat-icon>
 							</button>
 						</div>
