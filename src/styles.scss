@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@include mat.core();
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,7 +8,11 @@
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import 'app/variables';
 
-html, body { height: 100%; }
+
+html,
+body {
+	height: 100%;
+}
 
 // change default font colot to #1D1B20
 body {
@@ -17,9 +23,34 @@ body {
 	font-size: 24px;
 }
 
-.mdc-list-item__start, .mdc-list-item__end, .mdc-list-item__graphic, .mdc-list-item__meta, .mdc-list-item__text-icon {
+.mdc-list-item__start,
+.mdc-list-item__end,
+.mdc-list-item__graphic,
+.mdc-list-item__meta,
+.mdc-list-item__text-icon {
 	color: #7965AF !important;
 }
+
+
+// Define your custom primary color
+$my-primary: mat.define-palette($light-theme-palette, 200);
+$my-accent: mat.define-palette($light-theme-accent-palette, 800);
+
+
+$my-warn: mat.define-palette(mat.$red-palette);
+$my-typography: mat.define-typography-config();
+
+$my-theme: mat.define-light-theme((
+	color: (primary: $my-primary,
+				accent: $my-accent,
+				warn: $my-warn,
+			),
+			typography: $my-typography,
+			density: 0,
+		));
+
+@include mat.all-component-themes($my-theme);
+@include mat.form-field-typography($my-theme);
 
 
 mat-toolbar {
@@ -30,14 +61,25 @@ mat-toolbar {
 	}
 }
 
-html .mat-mdc-fab.mat-primary,
-html .mat-mdc-mini-fab.mat-primary {
-	--mdc-fab-container-color: #7965AF;
-	--mat-fab-foreground-color: #fff;
-	--mat-fab-state-layer-color: #fff;
-	--mat-fab-ripple-color: rgba(255, 255, 255, 0.1);
+mat-label {
+	color: $primary-accent-color !important;
+}
+.mdc-floating-label {
+	span {
+		color: $primary-accent-color;
+	}
+}
+.mat-step-icon-state-number:not(.mat-step-icon-selected) {
+	background-color: $primary-color;
 }
 
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	font-family: Roboto, "Helvetica Neue", sans-serif;
+}

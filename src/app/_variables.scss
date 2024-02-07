@@ -16,3 +16,52 @@ $warning-font-color: #212529;
 $info-font-color: #fff;
 $light-font-color: #212529;
 $dark-font-color: #fff;
+
+$primary-accent-color: #3d224f;
+
+$light-theme-palette: (
+	50: #F3EDF7,
+	100: #e2d1f0,
+	200: #d2b2ea,
+	300: #c190e3,
+	400: #b274db,
+	500: #a55ad4,
+	600: #9c53cd,
+	700: #8f49c3,
+	800: #8443bb,
+	900: #7336ac,
+	contrast: (50: rgba(black, 0.87),
+		100: rgba(black, 0.87),
+		200: rgba(black, 0.87),
+		300: rgba(black, 0.87),
+		400: rgba(black, 0.87),
+		500: rgba(black, 0.87),
+		600: rgba(black, 0.87),
+		700: rgba(black, 0.87),
+		800: rgba(black, 0.87),
+		900: rgba(black, 0.87),
+	)
+);
+
+$light-theme-accent-palette: (50: red,
+			100: #cc11f0,
+			200: #cc11ea,
+			300: #cc19e9,
+			400: #cc17d9,
+			500: brown,
+			600: #cc15c9,
+			700: #cc14c9,
+			800: #cc14b9,
+			900: #cc13a9,
+			contrast: (50: rgba(black, 0.87),
+				100: rgba(black, 0.87),
+				200: rgba(black, 0.87),
+				300: rgba(black, 0.87),
+				400: rgba(black, 0.87),
+				500: rgba(black, 0.87),
+				600: rgba(black, 0.87),
+				700: rgba(black, 0.87),
+				800: rgba(black, 0.87),
+				900: rgba(black, 0.87),
+			),
+	);
