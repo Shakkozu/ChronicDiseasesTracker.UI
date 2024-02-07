@@ -1,4 +1,4 @@
-<div class="container mt-4 pb-24">
+<div class="container pb-24">
 	<mat-toolbar class="pt-1" color="primary">
 		<button mat-icon-button class="mt-1" aria-label="Return button" (click)="return()">
 			<mat-icon>arrow_back</mat-icon>
@@ -9,7 +9,7 @@
 			<mat-icon>more_vert</mat-icon>
 		</button>
 		<mat-menu #menu="matMenu">
-			<button mat-menu-item [routerLink]="['/diseases/treatments/new']">
+			<button mat-menu-item [routerLink]="['/diseases', diseaseGuid, 'treatments', 'new']">
 				<span>Establish new treatment</span>
 			</button>
 		</mat-menu>
