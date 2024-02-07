@@ -5,6 +5,15 @@ module.exports = {
   ],
   theme: {
     extend: {
+      typography: {
+        'title-large': {
+          css: {
+            fontWeight: '400',
+            fontSize: '22px',
+            lineHeight: '28px',
+          }
+        }
+      },
       fontSize: {
         'display-large': [ '57px', { lineHeight: '64px', letterSpacing: '-0.25px' } ],
         'display-medium': [ '45px', { lineHeight: '52px' } ],
@@ -12,7 +21,7 @@ module.exports = {
         'headline-large': [ '32px', { lineHeight: '40px' } ],
         'headline-medium': [ '28px', { lineHeight: '36px' } ],
         'headline-small': [ '24px', { lineHeight: '32px' } ],
-        'title-large': [ '22px', { lineHeight: '28px' } ],
+        'title-large': [ '22px', { lineHeight: '28px' }, ],
         'title-medium': [ '16px', { lineHeight: '24px', letterSpacing: '0.15px' } ],
         'title-small': [ '14px', { lineHeight: '20px', letterSpacing: '0.1px' } ],
         'label-large': [ '14px', { lineHeight: '20px', letterSpacing: '0.1px' } ],
@@ -28,6 +37,9 @@ module.exports = {
         'icon-xl': '32px',
         'icon-2xl': '48px',
         'icon-3xl': '64px',
+      },
+      fontWeight: {
+        'title-large': [ 400 ]
       },
       fontFamily: {
         'roboto': [ 'Roboto', 'sans-serif' ],

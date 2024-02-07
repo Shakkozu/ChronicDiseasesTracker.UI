@@ -1,27 +1,26 @@
-<div class="container">
-	<mat-toolbar class="justify-center color-primary primary" color="primary">
-		<span class="text-headline-small">Diseases</span>
-	</mat-toolbar>
-	<div class="diseases-list mt-4">
-		<div *ngIf="(diseases$ | async)?.length === 0; list">
-			<p>No diseases available.</p>
-		</div>
-
-		<mat-list>
-			<div class="list-item-container" *ngFor="let disease of (diseases$ | async)" (click)="navigateToDiseaseDetails(disease.guid)">
-				<mat-list-item>
-					<mat-icon matListItemIcon style="font-size: 24px;">coronavirus</mat-icon>
-					<div matListItemTitle>{{disease.name}}</div>
-					<button style="margin-top: 4px;" mat-icon-button matListItemMeta><mat-icon
-							style="font-size: 24px; height: 24px; width: 24px;">navigate_next</mat-icon></button>
-				</mat-list-item>
-				<mat-divider />
-
-			</div>
-		</mat-list>
-		<button style="position: absolute; bottom: 6rem; right: 1.5rem;" [routerLink]="['./new']" mat-fab
-			color="primary" type="button">
-			<mat-icon>add</mat-icon>
-		</button>
+<mat-toolbar class="justify-center">
+	<span class="text-title-large">Diseases</span>
+</mat-toolbar>
+<div class="diseases-list mt-4">
+	<div *ngIf="(diseases$ | async)?.length === 0; list">
+		<p>No diseases available.</p>
 	</div>
+
+	<mat-list>
+		<div class="list-item-container" *ngFor="let disease of (diseases$ | async)"
+			(click)="navigateToDiseaseDetails(disease.guid)">
+			<mat-list-item>
+				<mat-icon matListItemIcon style="font-size: 24px;">coronavirus</mat-icon>
+				<div matListItemTitle>{{disease.name}}</div>
+				<button style="margin-top: 4px;" mat-icon-button matListItemMeta><mat-icon
+						style="font-size: 24px; height: 24px; width: 24px;">navigate_next</mat-icon></button>
+			</mat-list-item>
+			<mat-divider />
+
+		</div>
+	</mat-list>
+	<button style="position: absolute; bottom: 6rem; right: 1.5rem;" [routerLink]="['./new']" mat-fab color="primary"
+		type="button">
+		<mat-icon>add</mat-icon>
+	</button>
 </div>

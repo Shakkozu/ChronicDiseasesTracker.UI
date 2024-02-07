@@ -4,6 +4,7 @@
 @tailwind utilities;
 @import 'avalanche-css/avalanche';
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import 'app/variables';
 
 html, body { height: 100%; }
 
@@ -12,16 +13,29 @@ body {
 	color: #1D1B20;
 }
 
-.color-primary {
-	color: #6750A4;
-}
-
 .mat-icon {
-	font-size: 24px;;
+	font-size: 24px;
 }
 
 .mdc-list-item__start, .mdc-list-item__end, .mdc-list-item__graphic, .mdc-list-item__meta, .mdc-list-item__text-icon {
-	color: #6750A4 !important;
+	color: #7965AF !important;
+}
+
+
+mat-toolbar {
+	background-color: $primary-color !important;
+
+	span {
+		color: $primary-font-color;
+	}
+}
+
+html .mat-mdc-fab.mat-primary,
+html .mat-mdc-mini-fab.mat-primary {
+	--mdc-fab-container-color: #7965AF;
+	--mat-fab-foreground-color: #fff;
+	--mat-fab-state-layer-color: #fff;
+	--mat-fab-ripple-color: rgba(255, 255, 255, 0.1);
 }
 
 
