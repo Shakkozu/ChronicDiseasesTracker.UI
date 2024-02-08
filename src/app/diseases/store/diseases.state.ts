@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { State, Action, StateContext, Selector, Store } from '@ngxs/store';
-import { DiseasesInMemoryService, DiseasesRestService } from '../services/diseases.service';
+import { State, Action, StateContext, Selector } from '@ngxs/store';
+import { DiseasesRestService } from '../services/diseases.service';
 import { DiseasesStateModel, Diseases } from './disease.actions';
-import { Disease, EstablishNewTreatmentCommand, TreatmentDetails } from '../model/model';
+import { Disease } from '../model/model';
+import { Router } from '@angular/router';
 
 @State<DiseasesStateModel>({
 	name: 'diseases',
@@ -13,22 +14,12 @@ import { Disease, EstablishNewTreatmentCommand, TreatmentDetails } from '../mode
 })
 @Injectable()
 export class DiseasesState {
-	constructor (private diseaseService: DiseasesRestService) { }
+	constructor (private diseaseService: DiseasesRestService,
+		private router: Router) { }
 
 	@Action(Diseases.FetchAll)
 	fetchAllUserDiseases(ctx: StateContext<DiseasesStateModel>) {
-		ctx.patchState({ loading: true });
-		this.diseaseService.fetchAllDiseases().subscribe(diseases => {
-			ctx.patchState({
-				diseases: diseases,
-				loading: false,
-			});
-		}, error => {
-			ctx.patchState({
-				loading: false,
-				error: 'Failed to fetch diseases. Please try again later. Error message: ' + error, // Provide a more descriptive error message
-			});
-		})
+		this.refreshDiseases(ctx);
 	}
 
 	@Action(Diseases.CreateNewDisease)
@@ -36,14 +27,29 @@ export class DiseasesState {
 		this.diseaseService.createNewDisease(action.diseaseName)
 			.subscribe(_ => ctx.dispatch(new Diseases.FetchAll()));
 	}
-	
-	
+
 	@Action(Diseases.EstablishNewTreatment)
 	establishNewTreatment(ctx: StateContext<DiseasesStateModel>, action: Diseases.EstablishNewTreatment) {
 		this.diseaseService.createNewTreatment(action.newDiseaseCommand)
-			.subscribe(_ => ctx.dispatch(new Diseases.FetchAll()));
+			.subscribe(createdTreatmentGuid =>
+				this.refreshDiseases(ctx, () => {
+					this.router.navigate(['diseases', action.newDiseaseCommand.diseaseGuid, 'treatments', createdTreatmentGuid])
+				}), error => {
+					ctx.patchState({
+						loading: false,
+						error: 'Failed to fetch diseases. Please try again later. Error message: ' + error,
+					})
+				}
+			)
 	}
 
+	@Action(Diseases.EstablishNewTreatmentSuccess)
+	establishNewTreatmentSuccedeed(ctx: StateContext<DiseasesStateModel>, action: Diseases.EstablishNewTreatmentSuccess) {
+
+		this.refreshDiseases(ctx, () => {
+			this.router.navigate(['diseases', action.diseaseGuid, 'treatments', action.createdTreatmentGuid])
+		});
+	}
 	@Selector()
 	static diseasesList(state: DiseasesStateModel): Disease[] {
 		return state.diseases.map(dis => ({
@@ -92,8 +98,8 @@ export class DiseasesState {
 			return historicalTreatment;
 		};
 	}
-	
-	
+
+
 	@Selector([DiseasesState])
 	static findTreatmentRecommendationHistory(state: DiseasesStateModel) {
 		return (diseaseGuid: string, treatmentGuid: string, recommendation: string) => {
@@ -110,5 +116,22 @@ export class DiseasesState {
 				throw Error(`Recommendation history with name ${ recommendation } not found within disease ${ diseaseGuid } and treatment ${ treatmentGuid }`);
 			return result;
 		};
+	}
+
+	refreshDiseases(ctx: StateContext<DiseasesStateModel>, afterRefreshFunc: any = undefined) {
+		ctx.patchState({ loading: true });
+		this.diseaseService.fetchAllDiseases().subscribe(diseases => {
+			ctx.patchState({
+				diseases: diseases,
+				loading: false,
+			});
+			if (afterRefreshFunc)
+				afterRefreshFunc();
+		}, error => {
+			ctx.patchState({
+				loading: false,
+				error: 'Failed to fetch diseases. Please try again later. Error message: ' + error, // Provide a more descriptive error message
+			});
+		})
 	}
 }

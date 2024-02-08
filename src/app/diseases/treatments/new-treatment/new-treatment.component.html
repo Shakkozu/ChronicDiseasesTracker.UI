@@ -1,5 +1,5 @@
 <div class="container">
-	<mat-toolbar class="pt-1">
+	<mat-toolbar class="pt-1" color="primary">
 		<button mat-icon-button class="mt-1" aria-label="Return button" (click)="return()">
 			<mat-icon>arrow_back</mat-icon>
 		</button>
@@ -17,7 +17,7 @@
 					<form [formGroup]="treatmentForm" class="mt-4">
 						<ng-template matStepLabel>Fill basic information</ng-template>
 						<mat-form-field floatLabel="always" appearance="fill" class="w-72">
-							<mat-label>Treatment</mat-label>
+							<mat-label style="color: red;">Treatment</mat-label>
 							<input required="treatment" matNativeControl formControlName="treatment">
 							<app-error-message [control]="getControl('treatment')"></app-error-message>
 						</mat-form-field>
@@ -46,7 +46,7 @@
 					</form>
 				</div>
 				<div class="step-actions">
-					<button [disabled]="treatmentForm.invalid" mat-raised-button matStepperNext color="primary">Next</button>
+					<button [disabled]="treatmentForm.invalid" mat-raised-button color="primary" matStepperNext>Next</button>
 				</div>
 			</mat-step>
 

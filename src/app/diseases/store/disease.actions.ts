@@ -20,6 +20,11 @@ export namespace Diseases {
 		static readonly type = '[Diseases] Establish New Treatment';
 		constructor (public newDiseaseCommand: EstablishNewTreatmentCommand) { }
 	}
+	
+	export class EstablishNewTreatmentSuccess {
+		static readonly type = '[Diseases] Establish New Treatment Success';
+		constructor (public diseaseGuid: string, public createdTreatmentGuid: string) { }
+	}
 }
 
 export interface DiseasesStateModel {

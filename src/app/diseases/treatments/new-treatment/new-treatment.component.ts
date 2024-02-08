@@ -81,9 +81,7 @@ export class NewTreatmentComponent {
     };
 
     this.store.dispatch(new Diseases.EstablishNewTreatment(command))
-      .subscribe(_ => {
-        
-        });
+      .subscribe(_ => {});
   }
 
   private getValueFromFormControl(formControlName: string) {

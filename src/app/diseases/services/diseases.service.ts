@@ -33,7 +33,7 @@ export class DiseasesRestService implements DiseasesService {
 		);
 	}
 
-	createNewTreatment(command: EstablishNewTreatmentCommand): Observable<any> {
+	createNewTreatment(command: EstablishNewTreatmentCommand): Observable<string | any> {
 		const url = `${ environment.apiUrl }/diseases/${ command.diseaseGuid }/treatments`;
 		const headers = new HttpHeaders({
 			'Content-Type': 'application/json',
