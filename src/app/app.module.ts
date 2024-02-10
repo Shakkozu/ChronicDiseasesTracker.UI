@@ -16,7 +16,9 @@ import { SharedModule } from './shared/shared.module';
 import { NgxsModule } from '@ngxs/store';
 import { DiseasesState } from './diseases/store/diseases.state';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
-
+import { AuthModule } from '@auth0/auth0-angular';
+import { AuthorizationModule } from './authorization/authorization.module';
+import { environment } from '../environments/environment.prod';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +36,14 @@ import { provideRouter, withComponentInputBinding } from '@angular/router';
     BrowserAnimationsModule,
     SharedModule,
     DiseasesModule,
+    AuthorizationModule,
+    AuthModule.forRoot({
+      domain: environment.auth0.domain,
+      clientId: environment.auth0.clientId,
+      authorizationParams: {
+        redirect_uri: window.location.origin
+      }
+    })
   ],
   providers: [
     [{ provide: MAT_DATE_LOCALE, useValue: 'pl-PL' }],
@@ -41,4 +51,8 @@ import { provideRouter, withComponentInputBinding } from '@angular/router';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor () {
+  }
+
+ }

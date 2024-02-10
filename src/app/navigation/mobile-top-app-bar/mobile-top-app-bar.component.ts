@@ -1,4 +1,7 @@
 import { Component, Input } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-mobile-top-app-bar',
@@ -7,8 +10,12 @@ import { Component, Input } from '@angular/core';
 })
   
 export class MobileTopAppBarComponent {
-  constructor () { }
+  constructor (private auth: AuthService) { }
   @Input() text: string = 'Chronic Disease Tracker';
+
+  public get IsAuthenticated$() :Observable<boolean> {
+    return this.auth.isAuthenticated$;
+  }
   
 
 }

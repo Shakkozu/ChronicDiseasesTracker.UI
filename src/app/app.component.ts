@@ -1,5 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { AuthService } from './authorization/auth.service';
 import { Observable, map, shareReplay } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { DiseasesState } from './diseases/store/diseases.state';
@@ -20,16 +19,10 @@ export class AppComponent {
       map(result => result.matches),
       shareReplay()
     );
-  constructor (private authService: AuthService, private store: Store) {
+  constructor (private store: Store) {
     this.isMobile = this.breakpointObserver.isMatched('(max-width: 599px)');
-    console.log('calling dieseases state')
     this.store.dispatch(new Diseases.FetchAll()).subscribe(_ => {});
   }
 
-  public isUserLoggedIn$: Observable<boolean> = this.authService.isLoggedIn();
   public isMobile: boolean = false;
-
-  logout() {
-    this.authService.logout();
-  }
 }
