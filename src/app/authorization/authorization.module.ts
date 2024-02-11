@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginButtonComponent } from './login-button/login-button.component';
-import { LogoutButtonComponent } from './logout-button/logout-button.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import { LogoutComponent } from './logout/logout.component';
+import { LoginButtonComponent } from './components/login-button/login-button.component';
+import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { LogoutComponent } from './components/logout/logout.component';
 import { RouterModule, Routes } from '@angular/router';
+import { MaterialModule } from '../material.module';
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
+    MaterialModule,
     RouterModule.forChild(routes)
   ],
   exports: [

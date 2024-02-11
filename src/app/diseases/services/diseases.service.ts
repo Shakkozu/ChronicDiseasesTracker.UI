@@ -75,7 +75,8 @@ export class DiseasesRestService implements DiseasesService {
 
 	fetchAllDiseases(): Observable<DiseaseDetails[]> {
 		const url = `${ environment.apiUrl }/diseases`;
-		return this.http.get<DiseaseDetails[]>(url);
+		return this.http.get<DiseaseDetails[]>(url)
+			.pipe(catchError(this.handleError));
 	}
 }
 

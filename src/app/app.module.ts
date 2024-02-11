@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MainNavbarComponent } from './navigation/main-navbar/main-navbar.component';
 import { MobileNavbarComponent } from './navigation/mobile-navbar/mobile-navbar.component';
 import { MobileTopAppBarComponent } from './navigation/mobile-top-app-bar/mobile-top-app-bar.component';
@@ -19,6 +19,7 @@ import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { AuthModule } from '@auth0/auth0-angular';
 import { AuthorizationModule } from './authorization/authorization.module';
 import { environment } from '../environments/environment.prod';
+import { AuthInterceptor } from './authorization/auth-interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,12 +42,18 @@ import { environment } from '../environments/environment.prod';
       domain: environment.auth0.domain,
       clientId: environment.auth0.clientId,
       authorizationParams: {
-        redirect_uri: window.location.origin
-      }
+        redirect_uri: window.location.origin,
+        audience: environment.auth0.audience,
+        scope: 'openid profile email'
+      },
+      httpInterceptor: {
+        allowedList: [`${environment.apiUrl}/*`]
+      },
     })
   ],
   providers: [
     [{ provide: MAT_DATE_LOCALE, useValue: 'pl-PL' }],
+    [ { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
     provideRouter([], withComponentInputBinding()),
   ],
   bootstrap: [AppComponent]

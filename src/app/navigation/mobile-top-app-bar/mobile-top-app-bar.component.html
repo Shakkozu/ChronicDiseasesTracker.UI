@@ -1,6 +1,6 @@
 <mat-toolbar class="justify-center">
 	<span class="text-headline-small">{{text}}</span>
 	<span class="flex-1"></span>
-	<app-login-button *ngIf="!(IsAuthenticated$ | async)"></app-login-button>
-	<app-logout-button *ngIf="(IsAuthenticated$ | async)"></app-logout-button>
+	<app-login-button *ngIf="!(auth.isAuthenticated$ | async)"></app-login-button>
+	<app-logout-button *ngIf="(auth.isAuthenticated$ | async)"></app-logout-button>
 </mat-toolbar>

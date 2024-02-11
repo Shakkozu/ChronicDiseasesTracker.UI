@@ -10,12 +10,6 @@ import { Observable } from 'rxjs';
 })
   
 export class MobileTopAppBarComponent {
-  constructor (private auth: AuthService) { }
+  constructor (public auth: AuthService) { }
   @Input() text: string = 'Chronic Disease Tracker';
-
-  public get IsAuthenticated$() :Observable<boolean> {
-    return this.auth.isAuthenticated$;
-  }
-  
-
 }
