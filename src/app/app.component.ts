@@ -1,9 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { Observable, map, shareReplay } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { DiseasesState } from './diseases/store/diseases.state';
 import { Store } from '@ngxs/store';
 import { Diseases } from './diseases/store/disease.actions';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +19,9 @@ export class AppComponent {
       map(result => result.matches),
       shareReplay()
     );
-  constructor (private store: Store) {
+  constructor (private store: Store, private translate: TranslateService) {
+    this.translate.setDefaultLang('en');
+    translate.use('en');
     this.isMobile = this.breakpointObserver.isMatched('(max-width: 599px)');
     this.store.dispatch(new Diseases.FetchAll()).subscribe(_ => {});
   }

@@ -6,6 +6,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { LogoutComponent } from './components/logout/logout.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from '../material.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 const routes: Routes = [
@@ -18,11 +19,12 @@ const routes: Routes = [
     LoginButtonComponent,
     LogoutComponent,
     LogoutButtonComponent,
-    UserProfileComponent
+    UserProfileComponent,
   ],
   imports: [
     CommonModule,
     MaterialModule,
+    SharedModule,
     RouterModule.forChild(routes)
   ],
   exports: [

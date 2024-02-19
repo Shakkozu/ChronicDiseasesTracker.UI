@@ -18,6 +18,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter'; 
 import { MatSelectModule, MatSelectTrigger } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
+import { MatRadioModule } from '@angular/material/radio';
 
 const MaterialComponents = [
 	MatToolbarModule,
@@ -28,6 +29,7 @@ const MaterialComponents = [
 	MatTableModule,
 	MatPaginatorModule,
 	MatOptionModule,
+	MatRadioModule,
 	MatSortModule,
 	MatGridListModule,
 	MatCardModule,

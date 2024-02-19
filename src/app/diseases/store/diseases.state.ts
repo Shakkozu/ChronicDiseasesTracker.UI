@@ -125,6 +125,7 @@ export class DiseasesState {
 				diseases: diseases,
 				loading: false,
 			});
+			console.log(diseases);
 			if (afterRefreshFunc)
 				afterRefreshFunc();
 		}, error => {

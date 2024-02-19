@@ -1,5 +1,5 @@
 <mat-toolbar class="justify-center" color="primary">
-	<span class="text-title-large">Diseases</span>
+	<span class="text-title-large">{{'Hello' | translate}}</span>
 </mat-toolbar>
 <div class="diseases-list mt-4">
 	<div *ngIf="(diseases$ | async)?.length === 0; list">
