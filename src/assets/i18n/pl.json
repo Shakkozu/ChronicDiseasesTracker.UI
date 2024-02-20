@@ -2,5 +2,9 @@
 	"HELLO": "Witaj",
 	"WELCOME": "Witaj w aplikacji",
 	"PROFILE": "Profil użytkownika",
-	"LANGUAGE_SETTINGS": "Język"
+	"LANGUAGE_SETTINGS": "Język",
+	"NAVIGATION": {
+		"Health": "Zdrowie",
+		"Account": "Konto" 
+	}
 }

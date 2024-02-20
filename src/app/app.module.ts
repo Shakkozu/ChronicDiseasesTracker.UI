@@ -24,6 +24,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslationLoaderService } from './translation/translation-loader.service';
 import { LanguageSettingsComponent } from './mainComponents/language-settings/language-settings.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,6 +68,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     })
   ],
   providers: [
+    CookieService,
     [{ provide: MAT_DATE_LOCALE, useValue: 'pl-PL' }],
     [ { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
     provideRouter([], withComponentInputBinding()),
