@@ -14,5 +14,9 @@
 		"SYMPTOMS" : "Symptopms",
 		"PROCEDURES" : "Medical Procedures",
 		"CHECKUPS" : "Medical Check-ups"
+	},
+	"TREATMENT_DETAILS": {
+		"CURRENT": "Current treatment",
+		"HISTORICAL": "Historical treatment"
 	}
 }

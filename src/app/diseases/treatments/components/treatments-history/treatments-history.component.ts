@@ -14,7 +14,7 @@ export class TreatmentsHistoryComponent {
   public treatments: TreatmentDetails[] = [];
   public diseaseGuid: string;
 
-  constructor (private store: Store, private route: ActivatedRoute) { 
+  constructor (private store: Store, private route: ActivatedRoute, private dateService: DateService) { 
     this.diseaseGuid = this.route.snapshot.paramMap.get('diseaseGuid') ?? '';
 
     this.treatments = this.store.selectSnapshot(DiseasesState.findAllDiseaseTreatments)(this.diseaseGuid);
@@ -37,6 +37,6 @@ export class TreatmentsHistoryComponent {
   }
 
   getDateString(treatment: TreatmentDetails) {
-    return DateService.getDurationString(treatment.startDate, treatment.endDate);
+    return this.dateService.getDurationString(treatment.startDate, treatment.endDate);
   }
 }

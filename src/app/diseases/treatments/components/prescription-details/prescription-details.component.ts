@@ -13,7 +13,7 @@ import { DiseasesState } from '../../../store/diseases.state';
 export class PrescriptionDetailsComponent {
   
   public details: RecommendationHistoryDetails;
-  constructor (private route: ActivatedRoute, private store: Store) {
+  constructor (private route: ActivatedRoute, private store: Store, private dateService: DateService) {
     const diseaseGuid = this.route.snapshot.paramMap.get('diseaseGuid') ?? '';
     const treatmentGuid = this.route.snapshot.paramMap.get('treatmentGuid') ?? '';
     const recommendationName = this.route.snapshot.paramMap.get('recommendationName') ?? '';
@@ -34,6 +34,6 @@ export class PrescriptionDetailsComponent {
   }
 
   public getDurationString(startDate: Date, endDate: Date | undefined) {
-    return DateService.getDurationString(startDate, endDate);
+    return this.dateService.getDurationString(startDate, endDate);
   }
 }

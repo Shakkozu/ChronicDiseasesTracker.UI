@@ -13,5 +13,9 @@
 		"SYMPTOMS": "Objawy",
 		"PROCEDURES": "Zabiegi medyczne",
 		"CHECKUPS": "Badania"
+	},
+	"TREATMENT_DETAILS": {
+		"CURRENT": "Aktualna terapia",
+		"HISTORICAL" : "Historyczna terapia"
 	}
 }

@@ -22,7 +22,6 @@ export class AppComponent {
     );
   constructor (private store: Store, private translate: TranslateService, private cookieService: CookieService) {
     const storedCulture = this.cookieService.get('culture') ?? 'en';
-    console.log(storedCulture);
     this.translate.setDefaultLang(storedCulture);
     translate.use(storedCulture);
     this.isMobile = this.breakpointObserver.isMatched('(max-width: 599px)');

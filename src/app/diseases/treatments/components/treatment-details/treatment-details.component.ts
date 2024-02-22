@@ -19,11 +19,17 @@ export class TreatmentDetailsComponent {
   public get treatmentDefined(): boolean {
     return this.treatment !== undefined;
   }
-  public get isCurrentTreatment(): boolean {
+  private get isCurrentTreatment(): boolean {
     return this.treatment.endDate === undefined || this.treatment.endDate === null;
   }
 
-  constructor (private store: Store, private route: ActivatedRoute) {
+  public get title(): string {
+    const prefix = 'TREATMENT_DETAILS.';
+    const suffix = this.isCurrentTreatment ? 'CURRENT' : 'HISTORICAL';
+    return prefix + suffix;
+  }
+
+  constructor (private store: Store, private route: ActivatedRoute, private dateService: DateService) {
     this.diseaseGuid = this.route.snapshot.paramMap.get('diseaseGuid') ?? '';
     const treatmentGuid = this.route.snapshot.paramMap.get('treatmentGuid') ?? '';
 
@@ -36,7 +42,7 @@ export class TreatmentDetailsComponent {
   }
 
   getDateString() {
-    return DateService.getDurationString(this.treatment.startDate, this.treatment.endDate);
+    return this.dateService.getDurationString(this.treatment.startDate, this.treatment.endDate);
   }
 
   getInitials(establishedBy: string) {

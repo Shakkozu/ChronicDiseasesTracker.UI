@@ -1,6 +1,14 @@
-export class DateService {
+import { Injectable } from "@angular/core";
+import { TranslateService } from "@ngx-translate/core";
 
-	public static getDurationString(startDate: Date | string, endDate: Date | string | undefined): string {
+@Injectable({
+	providedIn: 'root'
+})
+export class DateService {
+	constructor (private translateService: TranslateService) {
+	}
+
+	public getDurationString(startDate: Date | string, endDate: Date | string | undefined): string {
 		const parseDate = (dateStr: string): Date => new Date(dateStr);
 		let startDateStr = '';
 		let endDateStr = '';
@@ -12,7 +20,11 @@ export class DateService {
 		}
 
 		if (!endDate) {
-			endDateStr = 'now';
+			const currentCulture = this.translateService.currentLang;
+			if (currentCulture === 'en')
+				endDateStr = 'now';
+			if (currentCulture === 'pl')
+				endDateStr = 'obecnie';
 		}
 		else if (endDate instanceof Date) {
 			endDateStr = endDate.toLocaleDateString();
