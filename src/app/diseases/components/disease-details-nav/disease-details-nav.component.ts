@@ -17,10 +17,10 @@ export class DiseaseDetailsNavComponent {
 
   public disease: Disease;
   public items = [
-    { 'title': 'Treatment', 'image': 'assets/images/hor-1.jpg' },
-    { 'title': 'Symptoms', 'image': 'assets/images/hc-8.jpg' },
-    { 'title': 'Diagnosis', 'image': 'assets/images/hc-3.jpg' },
-    { 'title': 'Prevention', 'image': 'assets/images/hc-6.jpg' },
+    { 'nav_src': 'Treatment', 'title': 'DISEASES_NAVIGATION.TREATMENTS', 'image': 'assets/images/hor-1.jpg' },
+    { 'nav_src': '', 'title': 'DISEASES_NAVIGATION.SYMPTOMS', 'image': 'assets/images/hc-8.jpg' },
+    { 'nav_src': '', 'title': 'DISEASES_NAVIGATION.PROCEDURES', 'image': 'assets/images/hc-3.jpg' },
+    { 'nav_src': '', 'title': 'DISEASES_NAVIGATION.CHECKUPS', 'image': 'assets/images/hc-6.jpg' },
   ];
 
   ngOnInit(): void {

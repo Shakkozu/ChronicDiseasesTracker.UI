@@ -7,5 +7,12 @@
 	"NAVIGATION": {
 		"Health": "Health",
 		"Account": "Account" 
+	},
+	"DISEASES_LIST": "Diseases List",
+	"DISEASES_NAVIGATION": {
+		"TREATMENTS": "Treatments",
+		"SYMPTOMS" : "Symptopms",
+		"PROCEDURES" : "Medical Procedures",
+		"CHECKUPS" : "Medical Check-ups"
 	}
 }

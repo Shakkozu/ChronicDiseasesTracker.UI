@@ -10,10 +10,10 @@
 	<div class="diseases-list mt-4">
 		<mat-list>
 			<div class="list-item-container" *ngFor="let item of items; let i = index">
-				<mat-list-item [disabled]="i > 0" [lines]="2" (click)="navigateToDetails(item.title)">
+				<mat-list-item [disabled]="i > 0" [lines]="2" (click)="navigateToDetails(item.nav_src)">
 					<img matListItemIcon style="width: 56px; height: 56px; margin: 8px 16px"
 						class="border-white rounded-md object-cover" [src]="item.image" />
-					<div matListItemTitle style="margin-top: 8px;">{{item.title}}</div>
+					<div matListItemTitle style="margin-top: 8px;">{{item.title | translate}}</div>
 					<button style="margin-top: 4px;" mat-icon-button matListItemMeta><mat-icon
 							style="font-size: 24px; height: 24px; width: 24px;">navigate_next</mat-icon></button>
 				</mat-list-item>

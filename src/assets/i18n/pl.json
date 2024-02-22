@@ -6,5 +6,12 @@
 	"NAVIGATION": {
 		"Health": "Zdrowie",
 		"Account": "Konto" 
+	},
+	"DISEASES_LIST": "Lista chorób",
+	"DISEASES_NAVIGATION": {
+		"TREATMENTS": "Leczenie",
+		"SYMPTOMS": "Objawy",
+		"PROCEDURES": "Zabiegi medyczne",
+		"CHECKUPS": "Badania"
 	}
 }
