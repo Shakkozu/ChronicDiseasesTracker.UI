@@ -4,14 +4,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { DiseasesListComponent } from './components/diseases-list/diseases-list.component';
 import { MaterialModule } from '../material.module';
 import { DiseaseDetailsNavComponent } from './components/disease-details-nav/disease-details-nav.component';
-import { NewTreatmentComponent } from './treatments/new-treatment/new-treatment.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RecommendationsComponent } from './treatments/new-treatment/recommendations/recommendations.component';
 import { SharedModule } from '../shared/shared.module';
 import { PrescriptionDetailsComponent } from './treatments/components/prescription-details/prescription-details.component';
 import { TreatmentDetailsComponent } from './treatments/components/treatment-details/treatment-details.component';
 import { TreatmentsHistoryComponent } from './treatments/components/treatments-history/treatments-history.component';
 import { NewDiseaseComponent } from './components/new-disease/new-disease.component';
+import { NewTreatmentComponent } from './treatments/components/new-treatment/new-treatment.component';
+import { RecommendationsComponent } from './treatments/components/new-treatment/recommendations/recommendations.component';
 
 const routes: Routes = [
   { path: '', component: DiseasesListComponent },

@@ -2,9 +2,9 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSelectChange } from '@angular/material/select';
-import { getNewGuid } from '../../../../shared/create-guid-service';
-import { FormRecommendation, FrequencyEntry } from '../../../model/model';
-import { ConfirmationDialogComponent, ConfirmationDialogResult } from '../../../../shared/confirmation-dialog/confirmation-dialog.component';
+import { getNewGuid } from '../../../../../shared/create-guid-service';
+import { FormRecommendation, FrequencyEntry } from '../../../../model/model';
+import { ConfirmationDialogComponent, ConfirmationDialogResult } from '../../../../../shared/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-recommendations',

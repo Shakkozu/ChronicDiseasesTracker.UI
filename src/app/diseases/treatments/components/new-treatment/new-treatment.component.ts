@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { RecommendationsComponent } from './recommendations/recommendations.component';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
-import { DATE_FORMAT } from '../../../shared/date-formats';
+import { DATE_FORMAT } from '../../../../shared/date-formats';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
-import { ConfirmationDialogComponent, ConfirmationDialogResult } from '../../../shared/confirmation-dialog/confirmation-dialog.component';
-import { EstablishNewTreatmentCommand, FormRecommendation } from '../../model/model';
+import { ConfirmationDialogComponent, ConfirmationDialogResult } from '../../../../shared/confirmation-dialog/confirmation-dialog.component';
+import { EstablishNewTreatmentCommand, FormRecommendation } from '../../../model/model';
 import { Store } from '@ngxs/store';
-import { Diseases } from '../../store/disease.actions';
+import { Diseases } from '../../../store/disease.actions';
 import { ActivatedRoute } from '@angular/router';
+import { RecommendationsComponent } from './recommendations/recommendations.component';
 
 @Component({
   selector: 'app-new-treatment',
